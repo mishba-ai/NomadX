@@ -17,12 +17,18 @@ function App() {
               />
             </li>
             <ul className="flex gap-x-8 text-sm font-medium">
-              <li>Services</li>
-              <li>Destination</li>
-              <li>Pricing</li>
+              <li className="hover:underline hover:decoration-white hover:underline-offset-4">
+                <a href=""> Services</a>
+              </li>
+              <li className="hover:underline hover:decoration-white hover:underline-offset-4">
+                <a href="">Destination</a>
+              </li>
+              <li className="hover:underline hover:decoration-white hover:underline-offset-4">
+                <a href=""> Pricing</a>
+              </li>
             </ul>
             <li>
-              <button className="bg-gradient-to-r from-black to-[#322E83] font-medium px-6 py-2 rounded-3xl text-white text-sm">
+              <button className="bg-gradient-to-r from-black to-[#322E83] font-medium px-5 py-2 rounded-3xl text-white text-sm ring-2 ring-offset-1 ">
                 Go Nomad
               </button>
             </li>
@@ -70,7 +76,11 @@ function App() {
         <hr className="border-gray-500" />
         <div className="flex justify-between mt-14">
           <div>
-            <img src="../nomadxlogo.png" alt=""className="h-24 w-24 -mt-10 pb-4" />
+            <img
+              src="../nomadxlogo.png"
+              alt=""
+              className="h-24 w-24 -mt-10 pb-4"
+            />
           </div>
           <div className="flex gap-x-14 font-medium  text-lg">
             <h3>Product</h3>

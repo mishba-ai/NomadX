@@ -6,9 +6,9 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon server.js"
   },
-  "author": "",
+  "author": "Misba",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
