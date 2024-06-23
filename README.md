@@ -1,4 +1,6 @@
-<div style="text-align: center; width:100vw;height:500px">!["NomadX"](/Frontend/public/NOMADX.png)</div>
+<div style="align: center; width:100vw;height:500px">
+  <img src ="/Frontend/public/NOMADX.png" />
+</div>
 
 # What is NomadX?
 
