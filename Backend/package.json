@@ -8,7 +8,7 @@
     "start": "node index.js",
     "dev": "nodemon server.js"
   },
-  "author": "Misba",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",

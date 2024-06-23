@@ -1,7 +1,10 @@
 import oworld from "./assets/oworld.png";
 import girlbp from "./assets/girlbp.png";
+import Map from "./components/map.jsx";
+import React ,{useState} from "react";
 
 function App() {
+  const [showNewPage, setShowNewPage] = React.useState(false);
   return (
     <section className="overflow-x-hidden bg-gradient-to-r from-black to-blue">
       {/* landing section */}
@@ -43,6 +46,7 @@ function App() {
                 src={oworld}
                 alt="globe"
                 className="h-[15rem] w-[20rem] relative mt-36 animate-bounce "
+                onClick={() => setShowNewPage(true)} 
               />
             </span>
             <span>mad X</span>
