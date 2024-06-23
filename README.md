@@ -1,4 +1,7 @@
-<div style="align: center; width:100vw;height:500px">
+<div style="display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;">
   <img src ="/Frontend/public/NOMADX.png" />
 </div>
 
