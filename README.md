@@ -1,9 +1,6 @@
-<div style="display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;">
-  <img src ="/Frontend/public/NOMADX.png" />
-</div>
+<p align="center">
+  <img src ="/Frontend/public/NOMADX.png" width="200" height="200" >
+</p>
 
 # What is NomadX?
 
