@@ -1,10 +1,10 @@
 import oworld from "./assets/oworld.png";
 import girlbp from "./assets/girlbp.png";
-import Map from "./components/map.jsx";
-import React ,{useState} from "react";
+// import Map from "../src/components/Map.jsx";
+// import React ,{useState} from "react";
 
 function App() {
-  const [showNewPage, setShowNewPage] = React.useState(false);
+  // const [showNewPage, setShowNewPage] = React.useState(false);
   return (
     <section className="overflow-x-hidden bg-gradient-to-r from-black to-blue">
       {/* landing section */}

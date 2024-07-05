@@ -1,6 +1,6 @@
 <p align="center">
   <img src ="/Frontend/public/NOMADX.png" width="200" height="200" >
-</p>
+</p>fF
 
 # What is NomadX?
 

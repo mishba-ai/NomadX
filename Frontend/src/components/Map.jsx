@@ -28,6 +28,7 @@ export default function Map() {
           </Geographies>
         </ComposableMap>
       </div>
+      {/* react map  */}
     </div>
   );
 }
