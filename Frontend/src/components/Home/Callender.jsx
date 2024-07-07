@@ -1,8 +1,11 @@
-import React from 'react'
 
 function Callender() {
   return (
-    <div>Callender</div>
+    <div>
+        <div className="w-[43rem] h-[20rem] rounded-2xl p-2 bg-white">
+vgfrftg
+        </div>
+    </div>
   )
 }
 

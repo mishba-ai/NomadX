@@ -1,8 +1,9 @@
-import React from 'react'
 
 function Budget() {
   return (
-    <div>Budget</div>
+    <div>
+      <div className="w-[18rem] rounded-2xl h-[310px] bg-white">budget</div>
+    </div>
   )
 }
 
