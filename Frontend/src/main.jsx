@@ -1,43 +1,61 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
+// import App from "./App.jsx";
 import "./index.css";
 import Signup from "./Pages/Auth/Signup.jsx";
-import Community from "./Pages/Community.jsx";
-import Home from "./Pages/Home.jsx";
-import Landing from "./Pages/Landing.jsx";
-// import Setting from "./Pages/Setting.jsx";
+import Home from "./Pages/Home/Home.jsx";
+import Landing from "./Pages/landing/Landing.jsx";
+import Setting from "./Pages/Setting/Setting.jsx";
+import Forum from "./Pages/Forum/Forum.jsx";
+import search from "./Pages/search/search.jsx";
+import Profile from "./Pages/Setting/profile.jsx";
+import Layout from "./Layout.jsx";
+import Lens from "./Pages/Lens/Lens.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
-  },
-  {
-    path: "home",
-    element: <Home />,
-  },
-  // {
-  //   path: "forum",
-  //   element: <Forum />,
-  // },
-  {
-    path: "landingpage",
     element: <Landing />,
   },
-  // {
-  //   path: "setting",
-  //   element: <Setting />,
-  // },
   {
-    path: "community",
-    element: <Community />,
+    path: "signup",
+    element: <Signup />,
   },
+  
   {
-    path:"signup",
-    element:<Signup/>
-  }
+    path: "",
+    element: <Layout />,
+    children: [
+      {
+        path: "home",
+        element: <Home />,
+      },
+      {
+        path: "forum",
+        element: <Forum />,
+      },
+      
+      {
+        path: "search",
+        element: <search />,
+      },
+      {
+        path: "lens",
+        element: <Lens />,
+      },
+      {
+        path: "setting",
+        element: <Setting />,
+        children: [
+          {
+            path:'profile',
+            element:<Profile/>
+          }
+        ]
+      },
+    ],
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
