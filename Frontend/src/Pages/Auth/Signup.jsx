@@ -36,7 +36,7 @@ function Signup() {
           </h4>
           <form
             action=""
-            className="mt-8 flex flex-wrap gap-3 font-mono gap-y-10"
+            className="mt-8 flex text-black flex-wrap gap-3 font-mono gap-y-10"
           >
             <input
               type="text"

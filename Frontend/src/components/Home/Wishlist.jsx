@@ -6,9 +6,9 @@ import heartfill from "../../assets/svg/Wishlist/heartfill.svg";
 function Wishlist() {
   return (
     <div>
-      <div className="flex justify-between">
-        <h3 className="font-montserrat mt-1 font-bold text-xl">Wishlist</h3>
-        <div className="flex">
+      <div className="flex justify-between pr-14">
+        <h3 className="font-montserrat mt-1 font-bold text-sky-200 text-xl">Wishlist</h3>
+        <div className="flex justify-center items-center">
           <button className="h-5 w-5">
             <img src={arrowleft} alt="" />
           </button>

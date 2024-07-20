@@ -8,8 +8,8 @@ function Navbar() {
     <>
       <div className="w-[400px]  sticky top-0  text-white font-montserrat h-screen  bg-gradient-to-b from-[#414449] to-black pl-20 pr-5 py-6">
         <div className="flex  h-6 gap-x-2 items-center ">
-          <img src={Arrow} className="rotate-180 w-4 h-4" alt="" />
-          <h4 className="font-semibold  text-sm">Settings</h4>
+        <button className="w-6 h-6 hover:bg-gray-200 hover:bg-opacity-10 rounded-md flex justify-center items-center"> <img src={Arrow} className="rotate-180 w-4 h-4" alt="" /></button>
+          <h4 className="font-semibold  text-lg">Settings</h4>
         </div>
         {/* <p className="w-6 h-6 bg-red-500 hover:bg-slate-200">red</p> */}
         <div className="mt-10">
@@ -55,7 +55,7 @@ function Navbar() {
                 Travel Preferences
               </h4>
               <ul>
-                <li></li>
+                <li></li> 
                 <li></li>
               </ul>
             </li>

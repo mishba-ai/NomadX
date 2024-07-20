@@ -1,8 +1,10 @@
-import React from 'react'
+import Header from "../../components/Search/Header"
 
 function search() {
   return (
-    <div>search</div>
+    <div className="w-full h-screen ">
+      <Header/>
+    </div>
   )
 }
 

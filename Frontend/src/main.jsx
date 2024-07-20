@@ -7,8 +7,8 @@ import Home from "./Pages/Home/Home.jsx";
 import Landing from "./Pages/landing/Landing.jsx";
 import Setting from "./Pages/Setting/Setting.jsx";
 import Forum from "./Pages/Forum/Forum.jsx";
-import search from "./Pages/search/search.jsx";
-import Profile from "./Pages/Setting/profile.jsx";
+import Search from "./Pages/search/search.jsx";
+import Profile from "./Pages/Setting/Profile.jsx";
 import Layout from "./Layout.jsx";
 import Lens from "./Pages/Lens/Lens.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -38,7 +38,7 @@ const router = createBrowserRouter([
       
       {
         path: "search",
-        element: <search />,
+        element: <Search />,
       },
       {
         path: "lens",
@@ -49,7 +49,7 @@ const router = createBrowserRouter([
         element: <Setting />,
         children: [
           {
-            path:'profile',
+            path:'',
             element:<Profile/>
           }
         ]

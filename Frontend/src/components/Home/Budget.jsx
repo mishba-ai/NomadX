@@ -3,7 +3,7 @@ import Progressbar from "../Progressbar.jsx";
 function Budget() {
   return (
     <div>
-      <div className="w-[18rem] rounded-2xl h-[310px] p-4 bg-white">
+      <div className="w-[18rem] rounded-2xl h-[310px] p-4 bg-[#c4d6fc]">
         <h1 className="text-xl font-montserrat font-semibold">Budget</h1>
         <p className="text-xs font-mono font-medium mt-1">
           Good job,so far you have been keeping it under the budget

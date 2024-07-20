@@ -10,6 +10,7 @@ export default {
       fontFamily: {
         Gagalin: ["Gagalin-Regular"],
         montserrat: ["Montserrat","sans-serif"],
+        Robotomono :["Roboto Mono","monospace"],
       },
       backgroundImage: {
         'nomadni8': "url('./src/assets/nomadni8.png')",

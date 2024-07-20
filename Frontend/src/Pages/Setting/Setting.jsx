@@ -1,5 +1,5 @@
 import Navbar from "../../components/settings/Navbar.jsx";
-import Profile from "../Setting/profile.jsx";
+import Profile from "./Profile.jsx";
 
 function Setting() {
   return (
@@ -7,7 +7,8 @@ function Setting() {
       <div className="min-w-screen h-auto">
         <div className="flex  h-full">
           <Navbar />
-          <Profile />
+          
+          <Profile /> 
         </div>
       </div>
     </>
