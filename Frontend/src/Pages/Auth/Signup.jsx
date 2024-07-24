@@ -3,18 +3,19 @@ import icelandbg from "../../assets/videos/icelandbg.mp4";
 
 function Signup() {
   return (
-    <div className="m-0 p-0 overflow-y-hidden">
+    <div className=" w-full h-full ">
       <div className=" ">
+        
         <video
           src={icelandbg}
           alt=""
-          className="w-screen h-screen object-cover "
+          className=" w-[100%] max-h-screen object-cover bg-no-repeat pointer-events-none"
           autoPlay
           loop
           muted
         />
       </div>
-      <div className="flex  min-h-screen justify-center items-center  overflow-y-hidden absolute top-0 right-0 left-0">
+      <div className="flex h-screen justify-center items-center  overflow-y-hidden absolute top-0 right-0 left-0">
         <div className="w-[1050px]  h-[550px] rounded-2xl bg-black p-12 opacity-[0.6] text-white font-montserrat flex">
           <div className="w-1/2">
           <img src="../../NOMADX.png" alt="logo" />

@@ -1,4 +1,7 @@
+import { useState } from "react";
+
 function Header() {
+  const [Selected, setSelected] = useState("");
   return (
     <div className="flex justify-end sticky top-0">
       <div
@@ -49,6 +52,7 @@ function Header() {
             </div>
             <div>
               <h1 className=" text-xl ">Internet</h1>
+              <div></div>
             </div>
             <div>
               {" "}
@@ -57,20 +61,30 @@ function Header() {
             <div>
               {" "}
               <h1 className=" text-xl ">Duration</h1>
-              <div>
-            
-              </div>
+              <div></div>
             </div>
             <div>
               {" "}
               <h1 className=" text-xl ">Climate</h1>
               <div className="mt-4 pl-6">
-                    <ul className="flex flex-wrap gap-x-4">
-                      <li className=""><button className="focus:bg-white focus:border  border focus:text-black focus:rounded-lg border-white text-center rounded-lg p-1 ">sunny</button></li>
-                      <li className="border-white text-center rounded-lg p-1 focus:bg-white focus:border  border"><button>rainy</button></li>
-                      <li className="border-white text-center rounded-lg p-1 focus:bg-white focus:border  border"><button>snowy</button></li>
-                      <li></li>
-                    </ul>
+                <ul className="flex flex-wrap gap-x-4">
+                  <li className="">
+                    <button className="focus:bg-white focus:border border focus:text-black focus:rounded-lg   border-white text-center rounded-lg p-1 ">
+                      sunny
+                    </button>
+                  </li>
+                  <li className="">
+                    <button className="focus:bg-white border-white text-center rounded-lg p-1 focus:text-black border">
+                      rainy
+                    </button>
+                  </li>
+                  <li className="">
+                    <button className="border-white text-center rounded-lg p-1 focus:bg-white focus:border  border focus:text-black">
+                      snowy
+                    </button>
+                  </li>
+                  <li></li>
+                </ul>
               </div>
             </div>
           </div>

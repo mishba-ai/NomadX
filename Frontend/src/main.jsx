@@ -45,11 +45,11 @@ const router = createBrowserRouter([
         element: <Lens />,
       },
       {
-        path: "setting",
+        path: "settings",
         element: <Setting />,
         children: [
           {
-            path:'',
+            path:'profile',
             element:<Profile/>
           }
         ]
