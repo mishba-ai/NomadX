@@ -8,7 +8,7 @@ import Landing from "./Pages/landing/Landing.jsx";
 import Setting from "./Pages/Setting/Setting.jsx";
 import Forum from "./Pages/Forum/Forum.jsx";
 import Search from "./Pages/search/search.jsx";
-import Profile from "./Pages/Setting/Profile.jsx";
+// import Profile from "./Pages/Setting/Profile.jsx";
 import Layout from "./Layout.jsx";
 import Lens from "./Pages/Lens/Lens.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -48,10 +48,10 @@ const router = createBrowserRouter([
         path: "settings",
         element: <Setting />,
         children: [
-          {
-            path: "profile",
-            element: <Profile />,
-          },
+          // {
+          //   path: "profile",
+          //   element: <Profile />,
+          // },
         ],
       },
     ],
