@@ -22,7 +22,7 @@ const router = createBrowserRouter([
     path: "signup",
     element: <Signup />,
   },
-  
+
   {
     path: "",
     element: <Layout />,
@@ -35,7 +35,7 @@ const router = createBrowserRouter([
         path: "forum",
         element: <Forum />,
       },
-      
+
       {
         path: "search",
         element: <Search />,
@@ -49,10 +49,10 @@ const router = createBrowserRouter([
         element: <Setting />,
         children: [
           {
-            path:'profile',
-            element:<Profile/>
-          }
-        ]
+            path: "profile",
+            element: <Profile />,
+          },
+        ],
       },
     ],
   },
