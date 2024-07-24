@@ -1,12 +1,12 @@
 import { useState } from "react";
 
-function Header() {
+function Filter() {
   const [Selected, setSelected] = useState("");
   return (
-    <div className="flex justify-end sticky top-0">
+    <div className="flex justify-end sticky top-0 ">
       <div
-        className=" z-50  w-[400px] h-screen flex flex-col items-center px-6 py-3 bg-black text-[#d1d5db] "
-        style={{ backgroundImage: `url('')` }}
+        className=" z-50  w-[350px] h-screen flex flex-col items-center px-6 py-3 bg-gradient-to-b from-[#414449] to-black text-[#d1d5db] "
+        
       >
         <h1 className="text-2xl font-medium font-Robotomono text-center pt-4">
           Find Your Next Adventure
@@ -20,7 +20,7 @@ function Header() {
               <div className="pl-4 flex flex-wrap">
                 <select
                   name="cont"
-                  className="w-44 mt-3  rounded-xl border-white bg-black border-[1px] p-2 "
+                  className="w-44 mt-3  rounded-xl border-white bg-transparent border-[1px] p-2 "
                   id=""
                 >
                   <option value=" " disabled selected hidden>
@@ -97,4 +97,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Filter;

@@ -1,4 +1,4 @@
-import Header from "../../components/Search/Header"
+import Header from "../../components/Search/Filter"
 
 function search() {
   return (
