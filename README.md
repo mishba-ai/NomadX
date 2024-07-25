@@ -16,7 +16,6 @@ It helps them find
 NomadX is built using the following technologies:
 
 - [React.js](https://Reactjs.org/) - library for web and native user interfaces
-- [MongoDB](https://www.mongodb.com/) - a NoSQL database
 - [Tailwind CSS](https://tailwindcss.com/) - a utility-first CSS framework
 
 ## Support
