@@ -12,6 +12,7 @@ import Profile from "./Pages/Setting/Profile.jsx";
 import Layout from "./Layout.jsx";
 import Lens from "./Pages/Lens/Lens.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Calendar from "./Pages/Calendar/Calendar.jsx";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: "lens",
         element: <Lens />,
+      },
+      {
+        path: "calendar",
+        element: <Calendar />,
       },
       {
         path: "settings",

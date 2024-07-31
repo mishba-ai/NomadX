@@ -3,7 +3,7 @@
 function Footer() {
   return (
     <>
-      <footer className=" w-screen h-[300px] bg-cover px-24 mt-8 text-white font-montserrat">
+      <footer className=" w-screen  h-[300px] bg-cover px-24 mt-8 text-white font-Robotomono">
         <hr className="border-gray-500" />
         <div className="flex justify-between mt-14">
           <div>

@@ -43,7 +43,7 @@ function Navbar() {
               </button>
             </Tooltip>
           </NavLink>
-          <NavLink to="">
+          <NavLink to="/Calendar">
             <Tooltip text={"Calendar"}>
               <button  className={`${isCurrentPath("/Calendar") ? "w-8 h-8 p-1 flex justify-center bg-sky-200 bg-opacity-20  items-center rounded-lg " : "w-8 h-8 hover:bg-slate-300 hover:bg-opacity-15 p-1 flex justify-center items-center rounded-lg"}`}>
                 <img src={calendar} alt="" />
