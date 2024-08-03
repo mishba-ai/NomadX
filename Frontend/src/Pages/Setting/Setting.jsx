@@ -1,5 +1,5 @@
 import Navbar from "../../components/settings/Navbar.jsx";
-import Profile from "./Profile.jsx";
+import { Outlet } from "react-router-dom";
 
 function Setting() {
   return (
@@ -7,8 +7,7 @@ function Setting() {
       <div className="min-w-screen h-auto">
         <div className="flex  h-full">
           <Navbar />
-          
-          <Profile /> 
+          <Outlet /> 
         </div>
       </div>
     </>

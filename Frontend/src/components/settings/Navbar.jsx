@@ -11,6 +11,11 @@ function Navbar() {
   const isCurrentPath = (path) => {
     return location.pathname === path;
   };
+  const isActivePath = (path) => {
+    return location.pathname.startsWith(path);
+  };
+
+
   return (
     <>
       <div className="w-[400px]  sticky top-0  text-white font-montserrat h-screen  bg-gradient-to-b from-[#414449] to-black pl-20 pr-5 py-6">
@@ -29,9 +34,9 @@ function Navbar() {
                 Account
               </h4>
               <ul className="space-y-1 flex flex-col mt-4 text- font-semibold">
-                <NavLink to="/settings/profile">
+                <NavLink to="/settings/profile/contact">
                   <li
-                    className={`${isCurrentPath("/settings/profile") ? "rounded-xl px-3 flex py-3 cursor-pointer gap-x-1 bg-slate-300  bg-opacity-15" : "hover:bg-opacity-15 hover:bg-slate-300  rounded-xl px-3 flex py-3 cursor-pointer gap-x-1"}`}
+                    className={`${isActivePath("/settings/profile") ? "rounded-xl px-3 flex py-3 cursor-pointer gap-x-1 bg-slate-300  bg-opacity-15" : "hover:bg-opacity-15 hover:bg-slate-300  rounded-xl px-3 flex py-3 cursor-pointer gap-x-1"}`}
                   >
                     <img src={profile} className="w-5 h-5" alt="" />
                     <p> Profile</p>

@@ -2,9 +2,8 @@ import Budget from "../../components/Home/Budget.jsx";
 import Calendar from "../../components/Home/Calendar.jsx";
 import Todo from "../../components/Home/Todo.jsx";
 import Wishlist from "../../components/Home/Wishlist.jsx";
-// import Earth from "../components/Home/Earth.jsx";
 import Location from "../../components/Location.jsx";
-import TravelTally from "../../components/Home/TravelTally.jsx";
+import Travelstats from "../../components/Home/Travelstats.jsx";
 import Progressbar from "../../components/Progressbar.jsx";
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -39,7 +38,7 @@ function Home() {
               )}
             </div>
            <Location />
-            <TravelTally />
+            <Travelstats />
             <div className="mt-6">
               <Progressbar progressPercentage={23} percentageOrDollar={"$"} />
             </div>

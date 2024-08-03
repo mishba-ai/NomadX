@@ -11,13 +11,7 @@ function Forum() {
             <ul className="flex gap-x-8">
               <li className="">
                 <select className="rounded-xl py-1 border border-transparent focus:border-2 focus:border-[#98cdf9]">
-                  <option
-                    value=""
-                    selected
-                    hidden
-                    disabled
-                    className=" "
-                  >
+                  <option value="" selected hidden disabled className=" ">
                     Categories
                   </option>
                   <option value="0">Travel Planning and Tips</option>
@@ -30,21 +24,26 @@ function Forum() {
                   <option value="7">Photography and Videography</option>
                 </select>
               </li>
-              <li><span className="cursor-pointer ">Latest</span></li>
+              <li>
+                <span className="cursor-pointer ">Latest</span>
+              </li>
               <li>Top</li>
             </ul>
             <ul>
-              <li><button className="bg-[#98cdf9] p-2 px-3 rounded-lg text-sky-800 hover:bg-sky-300">New Topic</button></li>
+              <li>
+                <button className="bg-[#98cdf9] p-2 px-3 rounded-lg text-sky-800 hover:bg-sky-300">
+                  New Topic
+                </button>
+              </li>
             </ul>
           </div>
         </nav>
       </section>
-      
-      
+
       <section className="px-44  justify-center flex  ">
-                <div className="text-4xl font-semibold w-96 text-sky-6">
-                  comming soon
-                </div>
+        <div className="text-4xl font-semibold w-96 text-sky-6">
+          comming soon
+        </div>
       </section>
     </div>
   );

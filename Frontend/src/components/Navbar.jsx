@@ -14,6 +14,9 @@ function Navbar() {
   const isCurrentPath = (path) => {
     return location.pathname === path; // Check if the current path is the same as the given path
   };
+  const isActivePath = (path) => {
+    return location.pathname.startsWith(path); // Check if the current path starts with the given path
+  };
   return (
     <nav
       className="w-16 h-screen border-r border-gray-800 bg-[#000000]  fixed top-0 rounded-r-2xl "
@@ -57,9 +60,9 @@ function Navbar() {
               </button>
             </Tooltip>
           </NavLink>
-          <NavLink to={"/settings/profile"}>
+          <NavLink to={"/settings/profile/contact"}>
             <Tooltip text={"settings"}>
-              <button  className={`${isCurrentPath("/settings/profile") ? "w-8 h-8 p-1 flex justify-center bg-sky-200 bg-opacity-20  items-center rounded-lg " : "w-8 h-8 hover:bg-slate-300 hover:bg-opacity-15 p-1 flex justify-center items-center rounded-lg"}`}>
+              <button  className={`${isActivePath("/settings/profile") ? "w-8 h-8 p-1 flex justify-center bg-sky-200 bg-opacity-20  items-center rounded-lg " : "w-8 h-8 hover:bg-slate-300 hover:bg-opacity-15 p-1 flex justify-center items-center rounded-lg"}`}>
                 <img src={settings} alt="" />
               </button>
             </Tooltip>
