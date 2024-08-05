@@ -7,6 +7,7 @@ import Travelstats from "../../components/Home/Travelstats.jsx";
 import Progressbar from "../../components/Progressbar.jsx";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import WorldCities from "../../components/Globe/worldcities.jsx";
 
 function Home() {
   const [user, setUser] = useState("");
@@ -42,13 +43,14 @@ function Home() {
             <div className="mt-6">
               <Progressbar progressPercentage={23} percentageOrDollar={"$"} />
             </div>
-            <dir>
-              <img
+            <div className="w-64 h-64 mt-4">
+              {/* <img
                 src="https://i.pinimg.com/originals/bc/62/e3/bc62e33b3a1d11c7b007b4120e8d209e.gif"
                 className="w-80 h-80 transition-transform scale-x-150"
                 alt=""
-              />
-            </dir>
+              /> */}
+              <WorldCities/>
+            </div>
           </div>
         </div>
 

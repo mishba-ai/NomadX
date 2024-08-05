@@ -1,7 +1,8 @@
-import React from "react";
+import React ,{Suspense}from "react";
 import ReactDOM from "react-dom/client";
-// import App from "./App.jsx";
+
 import "./index.css";
+
 import Signup from "./Pages/Auth/Signup.jsx";
 import Home from "./Pages/Home/Home.jsx";
 import Landing from "./Pages/landing/Landing.jsx";
@@ -17,9 +18,11 @@ import Discussion from "./components/settings/Profile/Discussion.jsx";
 import Travel from "./components/settings/Profile/Travel.jsx";
 import Password from "./Pages/Setting/Password.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+// import routes from "./routes/routes.js";
 import Calendar from "./Pages/Calendar/Calendar.jsx";
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
   {
     path: "/",
     element: <Landing />,
@@ -30,7 +33,7 @@ const router = createBrowserRouter([
   },
 
   {
-    path: "",
+    
     element: <Layout />,
     children: [
       {
@@ -68,21 +71,26 @@ const router = createBrowserRouter([
               { path: "contact", element: <Contact /> },
               { path: "discussion", element: <Discussion /> },
               { path: "travel", element: <Travel /> },
-              
             ],
           },
           {
             path: "password",
             element: <Password />,
-          }
+          },
         ],
       },
     ],
   },
 ]);
 
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+   
+    {/* <Suspense fallback={"loading"}>  */}
+       <RouterProvider router={router} />
+       {/* </Suspense>   */}
   </React.StrictMode>
 );
+
+
