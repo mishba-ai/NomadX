@@ -19,7 +19,7 @@ import Travel from "./components/settings/Profile/Travel.jsx";
 import Password from "./Pages/Setting/Password.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // import routes from "./routes/routes.js";
-import Calendar from "./Pages/Calendar/Calendar.jsx";
+import Calendar from "./Pages/Calendar/TravelCalendar.jsx";
 
 const router = createBrowserRouter(
   [

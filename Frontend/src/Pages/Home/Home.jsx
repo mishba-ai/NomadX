@@ -1,5 +1,4 @@
 import Budget from "../../components/Home/Budget.jsx";
-import Calendar from "../../components/Home/Calendar.jsx";
 import Todo from "../../components/Home/Todo.jsx";
 import Wishlist from "../../components/Home/Wishlist.jsx";
 import Location from "../../components/Location.jsx";
@@ -8,6 +7,7 @@ import Progressbar from "../../components/Progressbar.jsx";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import WorldCities from "../../components/Globe/worldcities.jsx";
+import TravelCalendar from "../Calendar/TravelCalendar.jsx";
 
 function Home() {
   const [user, setUser] = useState("");
@@ -22,7 +22,7 @@ function Home() {
     };
     fetchUsername();
   }, []);
-  
+
   return (
     <>
       <div className=" flex w-full  h-screen font-Robotomono bg-black justify-between pr-12">
@@ -31,31 +31,30 @@ function Home() {
             <div className="flex">
               <h1 className="font-semibold text-4xl text-sky-200"> Welcome,</h1>
               {user ? (
-                <h1 className="font-semibold text-4xl text-sky-200">
-                  {user}!
-                </h1>
+                <h1 className="font-semibold text-4xl text-sky-200">{user}!</h1>
               ) : (
-                <p className="font-semibold text-2xl text-sky-200">Loading...</p>
+                <p className="font-semibold text-2xl text-sky-200">
+                  Loading...
+                </p>
               )}
             </div>
-           <Location />
+            <Location />
             <Travelstats />
             <div className="mt-6">
               <Progressbar progressPercentage={23} percentageOrDollar={"$"} />
             </div>
             <div className="w-64 h-64 mt-4">
-              {/* <img
-                src="https://i.pinimg.com/originals/bc/62/e3/bc62e33b3a1d11c7b007b4120e8d209e.gif"
-                className="w-80 h-80 transition-transform scale-x-150"
-                alt=""
-              /> */}
-              <WorldCities/>
+              <WorldCities />
             </div>
           </div>
         </div>
 
         <div className="pt-5">
-          <Calendar />
+          <div className="w-[46rem] border-none  h-80">
+            {" "}
+            <TravelCalendar />
+          </div>
+
           <div className="flex mt-4 gap-x-4">
             <Budget />
             <div className="">
