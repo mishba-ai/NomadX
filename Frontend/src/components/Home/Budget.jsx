@@ -1,7 +1,7 @@
 import Progressbar from "../Progressbar.jsx";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import dustbin from "../../assets/svg/dustbin.svg";
+import deleteic from "../../assets/svg/deleteic.svg";
 import edit from "../../assets/svg/edit.svg";
 //axios is used to make the request to the server to get the data from the server and display it on the client side
 
@@ -19,6 +19,7 @@ function Budget() {
     description: "",
     date: " ",
   });
+  const [editingIndex, setEditingIndex] = useState(null); // this is used to set the index of the budget that is to be edited
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -35,20 +36,48 @@ function Budget() {
       [name]: value, // this pair the value of the input field with the name of the input field
     });
   };
+
+  //close form
   const closeForm = () => {
     setShowForm(false);
   };
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    // e.g., send data to server, update budgets state
-    setBudgets([...budgets, formData]);
-    setFormData({ amount: "", description: "", date: "" });
+    if (editingIndex !== null) {
+      handleUpdate(e);
+    } else {
+      // Handle form submission logic here
+      // e.g., send data to server, update budgets state
+      setBudgets([...budgets, formData]);
+      setFormData({ amount: "", description: "", date: "" });
+      setShowForm(false);
+    }
+  };
+
+  const handleEdit = (index) => {
+    setEditingIndex(index); // this is called when the edit button is clicked and the index of the budget is passed to it
+    setFormData(budgets[index]);
+    setShowForm(true);
+  };
+
+  const handleUpdate = (e) => {
+    //this function is called when the form is submitted to update the budget
+    e.preventDefault(); //this is used to prevent the default behaviour of the form
+    const updateBudgets = [...budgets]; //this is used to get the previous value of the budgets
+    updateBudgets[editingIndex] = formData; //this is used to update the budget with the new value
+    setEditingIndex(null); //this is used to set the editing index to null because the editing is done
+    setFormData({ amount: "", description: "", date: "" }); //this is used to set the form data to empty after the editing is done
     setShowForm(false);
   };
+ 
+  const handleDelete = (index) => {
+   const newBudgets = budgets.filter((_,i) => i !== index) //_ is used to get the value of the budget and i is used to get the index of the budget
+    setBudgets(newBudgets) //this is used to set the budgets to the new value
+  }
   const renderForm = () => {
     return (
-      <div className="h-48 w-64 absolute bottom-20  bg-black rounded-md bg-opacity-50 font-Robotomono ">
+      <div className="h-48 w-64 absolute bottom-20  bg-[#000] rounded-md bg-opacity-50 font-Robotomono z-10">
         <div className="flex justify-end p-3">
           <button
             onClick={closeForm}
@@ -58,7 +87,7 @@ function Budget() {
           </button>
         </div>
         <div className="px-4 justify-center flex flex-col place-items-center">
-          <p className="text-sky-100">Enter Budget</p>
+          <p className="text-sky-100">{editingIndex !== null ?'Edit Budget':'Enter Budget'}</p>
           <form onSubmit={handleFormSubmit} className="flex flex-wrap gap-2">
             {/* Your form inputs */}
             <input
@@ -90,23 +119,12 @@ function Budget() {
               type="submit"
               className="bg-sky-200 rounded-sm p-1 px-2 hover:bg-[#b2e5fd] text-sm"
             >
-              Submit
+              {editingIndex !== null ? 'Update' : 'Submit'}
             </button>
           </form>
         </div>
       </div>
     );
-  };
- 
-  const deleteBudget = (index) => {
-    // Handle delete budget logic here
-    
-  }
-
-  const editBudget = (index) => {
-    // Handle edit budget logic here
-    // e.g., send data to server, update budgets state
-
   };
 
   useEffect(() => {
@@ -134,13 +152,15 @@ function Budget() {
               <li
                 key={index}
                 className="flex justify-between items-center hover:bg-white rounded-md p-1 hover:bg-opacity-[0.01] cursor-pointer relative group"
-
               >
                 {" "}
                 <div className="absolute inset-0  flex items-center justify-center opacity-0 group-hover:opacity-50 gap-x-4 transition-opacity duration-200 bg-black bg-opacity-50 rounded-md z-10 ">
-
-                  <button className=""><img src={dustbin} alt="" /></button>
-                  <button><img src={edit} alt="" /></button>
+                  <button className="" onClick={()=> handleDelete(index)}  >
+                    <img src={deleteic} alt="" />
+                  </button>
+                  <button onClick={() => handleEdit(index)}>
+                    <img src={edit} alt="" />
+                  </button>
                 </div>
                 <div className="flex gap-x-1 group-hover:blur-[3px]">
                   <span className="w-12 h-5 flex items-center justify-center rounded-3xl border-gray-400 border text-xs ">
