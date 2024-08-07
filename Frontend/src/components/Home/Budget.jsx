@@ -5,32 +5,92 @@ import axios from "axios";
 //axios is used to make the request to the server to get the data from the server and display it on the client side
 
 function Budget() {
-  const [budget, setBudget] = useState(0);
   const [showForm, setShowForm] = useState(false);
   const [budgets, setBudgets] = useState([]);
-
+  const [formData, setFormData] = useState({
+    amount: "",
+    description: "",
+    date: " ",
+  });
+ 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return `${date.getDate().toString().padStart(2, "0")}.${(date.getMonth() + 1).toString().padStart(2, "0")}`; // this is used to format the date in the format of dd.mm .padStart() is used to add the 0 in the date if the date is less than 10
+  };
   function createNewBudget() {
     setShowForm(true);
   }
-  const handleFormSubmit = (data) => {
+  const handleinputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      // this is used to set the value of the input field in the state
+      ...formData, // this is used to get the previous value of the state
+      [name]: value, // this pair the value of the input field with the name of the input field
+    });
+  };
+  const closeForm = () => {
+    setShowForm(false);
+  };
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
     // Handle form submission logic here
     // e.g., send data to server, update budgets state
-    setBudgets([...budgets, data]);
+    setBudgets([...budgets, formData]);
+    setFormData({ amount: "", description: "", date: "" });
     setShowForm(false);
   };
   const renderForm = () => {
     return (
-      <div className="w-28 h-28 bg-white">
-        <form onSubmit={handleFormSubmit}>
-          {/* Your form inputs */}
-          <input type="number" placeholder="Enter your budget" />
-          <input type="text" placeholder="budget is for" />
-          <input type="date" />
-          <button type="submit">Submit</button>
-        </form>
+      <div className="h-48 w-64 absolute bottom-20 right-[rem] bg-black rounded-md bg-opacity-50 font-Robotomono ">
+        <div className="flex justify-end p-3">
+          <button
+            onClick={closeForm}
+            className="w-4 h-4 rounded-full bg-sky-50 text-xs text-center hover:bg-sky-100"
+          >
+            x
+          </button>
+        </div>
+        <div className="px-4 justify-center flex flex-col place-items-center">
+          <p className="text-sky-100">Enter Budget</p>
+          <form onSubmit={handleFormSubmit} className="flex flex-wrap gap-2">
+            {/* Your form inputs */}
+            <input
+              type="number"
+              name="amount"
+              className="w-20 h-8 p-1 rounded-lg bg-transparent border border-sky-200"
+              value={formData.amount}
+              onChange={handleinputChange}
+              placeholder="amount"
+            />
+            <input
+              type="text"
+              required
+              name="description"
+              value={formData.description}
+              onChange={handleinputChange}
+              className=" h-8 p-1 rounded-lg bg-transparent border  border-sky-200 w-44"
+              placeholder="Enter description"
+            />
+            <input
+              type="date"
+              required
+              className=" h-8 p-1 rounded-lg  bg-transparent border border-sky-200 w-36"
+              name="date"
+              value={formData.date}
+              onChange={handleinputChange}
+            />
+            <button
+              type="submit"
+              className="bg-sky-200 rounded-sm p-1 px-2 hover:bg-[#b2e5fd] text-sm"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
       </div>
     );
   };
+
   useEffect(() => {
     // createNewBudget();
   }, []);
@@ -50,11 +110,28 @@ function Budget() {
             <button onClick={createNewBudget}>+</button>
           </div>
           {showForm && renderForm()}
-          {/* <ul>
-            {budgets.map((budget,index) => () => {  // map over budgets array to render each budget item
-            <li key={index}>  {budget.amount} - {budget.description} - {budget.date}</li>
-            })}
-          </ul> */}
+          <ul className="text-center h-36 flex flex-col gap-y-2 overflow-y-auto overflow-x-hidden  scroll-smooth scroll-px-1 scroll-thumb-purple-300 scrollbar-track-purple-100">
+            {budgets.map((budget, index) => (
+              // map over budgets array to render each budget item
+              <li key={index} className="flex justify-between">
+                {" "}
+                <div className="flex gap-x-1">
+                  <span className="w-12 h-5 flex items-center justify-center rounded-3xl border-gray-400 border text-xs ">
+                    {formatDate(budget.date)}
+                  </span>{" "}
+                  <span className="text-sm w-40 line-clamp-2 bg-red-40  font-medium break-words">
+                    {budget.description}
+                  </span>
+                </div>{" "}
+                <div className="">
+                  {" "}
+                  <span className=" h-5 flex items-center justify-center rounded-3xl  text-xs p-2 bg-purple-400 text-white">
+                    {budget.amount}$
+                  </span>
+                </div>
+              </li>
+            ))}
+          </ul>
           {/* <ul className="flex flex-col gap-y-2 ">
             <li className="flex  justify-between">
               <div className="flex gap-x-1">
@@ -140,7 +217,7 @@ function Budget() {
                 <span className=" h-5 flex items-center justify-center rounded-3xl  text-xs p-2 bg-lime-300">5000$</span>
               </div>
             </li>
-          </ul> */}
+          </ul>  */}
         </div>
       </div>
     </div>
