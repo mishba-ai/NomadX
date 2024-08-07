@@ -1,18 +1,25 @@
 import Progressbar from "../Progressbar.jsx";
 import { useState, useEffect } from "react";
 import axios from "axios";
-
+import dustbin from "../../assets/svg/dustbin.svg";
+import edit from "../../assets/svg/edit.svg";
 //axios is used to make the request to the server to get the data from the server and display it on the client side
 
 function Budget() {
   const [showForm, setShowForm] = useState(false);
-  const [budgets, setBudgets] = useState([]);
+  const [budgets, setBudgets] = useState([
+    {
+      amount: "1k",
+      description: "Initial Budget",
+      date: "2024-08-01", // Use today's date or any default date
+    },
+  ]);
   const [formData, setFormData] = useState({
     amount: "",
     description: "",
     date: " ",
   });
- 
+
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return `${date.getDate().toString().padStart(2, "0")}.${(date.getMonth() + 1).toString().padStart(2, "0")}`; // this is used to format the date in the format of dd.mm .padStart() is used to add the 0 in the date if the date is less than 10
@@ -41,7 +48,7 @@ function Budget() {
   };
   const renderForm = () => {
     return (
-      <div className="h-48 w-64 absolute bottom-20 right-[rem] bg-black rounded-md bg-opacity-50 font-Robotomono ">
+      <div className="h-48 w-64 absolute bottom-20  bg-black rounded-md bg-opacity-50 font-Robotomono ">
         <div className="flex justify-end p-3">
           <button
             onClick={closeForm}
@@ -90,6 +97,17 @@ function Budget() {
       </div>
     );
   };
+ 
+  const deleteBudget = (index) => {
+    // Handle delete budget logic here
+    
+  }
+
+  const editBudget = (index) => {
+    // Handle edit budget logic here
+    // e.g., send data to server, update budgets state
+
+  };
 
   useEffect(() => {
     // createNewBudget();
@@ -113,9 +131,18 @@ function Budget() {
           <ul className="text-center h-36 flex flex-col gap-y-2 overflow-y-auto overflow-x-hidden  scroll-smooth scroll-px-1 scroll-thumb-purple-300 scrollbar-track-purple-100">
             {budgets.map((budget, index) => (
               // map over budgets array to render each budget item
-              <li key={index} className="flex justify-between">
+              <li
+                key={index}
+                className="flex justify-between items-center hover:bg-white rounded-md p-1 hover:bg-opacity-[0.01] cursor-pointer relative group"
+
+              >
                 {" "}
-                <div className="flex gap-x-1">
+                <div className="absolute inset-0  flex items-center justify-center opacity-0 group-hover:opacity-50 gap-x-4 transition-opacity duration-200 bg-black bg-opacity-50 rounded-md z-10 ">
+
+                  <button className=""><img src={dustbin} alt="" /></button>
+                  <button><img src={edit} alt="" /></button>
+                </div>
+                <div className="flex gap-x-1 group-hover:blur-[3px]">
                   <span className="w-12 h-5 flex items-center justify-center rounded-3xl border-gray-400 border text-xs ">
                     {formatDate(budget.date)}
                   </span>{" "}
