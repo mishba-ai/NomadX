@@ -1,6 +1,6 @@
 import Progressbar from "../Progressbar.jsx";
 import { useState, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
 import deleteic from "../../assets/svg/deleteic.svg";
 import edit from "../../assets/svg/edit.svg";
 //axios is used to make the request to the server to get the data from the server and display it on the client side
@@ -66,6 +66,7 @@ function Budget() {
     e.preventDefault(); //this is used to prevent the default behaviour of the form
     const updateBudgets = [...budgets]; //this is used to get the previous value of the budgets
     updateBudgets[editingIndex] = formData; //this is used to update the budget with the new value
+    setBudgets(updateBudgets); //this is used to set the budgets to the new value
     setEditingIndex(null); //this is used to set the editing index to null because the editing is done
     setFormData({ amount: "", description: "", date: "" }); //this is used to set the form data to empty after the editing is done
     setShowForm(false);
