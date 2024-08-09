@@ -25,7 +25,7 @@ function Home() {
 
   return (
     <>
-      <div className=" flex w-full  h-screen font-Robotomono bg-black justify-between pr-12">
+      <div className=" flex w-full  h-screen font-Robotomono bg-[#000] justify-between pr-12">
         <div className="w-[45rem] bg-transparent text-sky-200 border-r border-gray-700 h-screen rounded-2xl flex justify-center ">
           <div className="px-36 py-10 w-full">
             <div className="flex">
@@ -55,7 +55,7 @@ function Home() {
             <TravelCalendar />
           </div>
 
-          <div className="flex mt-4 gap-x-4">
+          <div className="flex mt-4 justify-between">
             <Budget />
             <div className="">
               <Todo />
