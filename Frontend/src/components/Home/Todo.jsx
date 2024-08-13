@@ -1,24 +1,15 @@
-import { useState ,useEffect} from "react";
+import { useState, useEffect } from "react";
 import square from "../../assets/todo/square.svg";
 import tickbox from "../../assets/todo/tickbox.svg";
 import deleteic from "../../assets/svg/deleteic.svg";
 import edit from "../../assets/svg/edit.svg";
 
 function Todo() {
-  const [todo, setTodo] = useState(""); //state to store the todo item
-  const [todoItems, setTodoItems] = useState({
-    description: "",
-    checked: false,
-  }); //this state use to
   const [todos, setTodos] = useState([
     { description: "check the details for the trp", checked: true },
     { description: "pack the bags", checked: false },
-    { description: "", checked: false },
   ]);
-  const handleInputChange = (e) => {
-    setInputValue(e.target.value);
-  };
-  // const [checked, setChecked] = useState(false);
+
   const [inputValue, setInputValue] = useState("");
 
   //function to add a new empty todo items to the list of todos
@@ -44,11 +35,13 @@ function Todo() {
     const lastIndex = todos.length - 1;
     const secondLastIndex = lastIndex - 1;
 
-    if (lastIndex > 0 && 
-        todos[lastIndex].description === "" && 
-        todos[secondLastIndex].description === "") {
+    if (
+      lastIndex > 0 &&
+      todos[lastIndex].description === "" &&
+      todos[secondLastIndex].description === ""
+    ) {
       // Remove the last todo if it's empty and there's another empty one above it
-      setTodos(todos.slice(0, -1));
+      setTodos(todos.slice(0, -1)); //slice
     } else if (todos[lastIndex].description !== "") {
       // Add a new empty todo if the last one is not empty
       setTodos([...todos, { description: "", checked: false }]);
@@ -64,43 +57,43 @@ function Todo() {
         <h1 className="text-xl font-mono font-semibold">Todo</h1>
 
         <div className="my-2 mx-2">
-   
-
-          {todos.length >0 && (
-          <ul className="flex flex-col  h-20 overflow-y-auto">
-            {todos.map((todo, index) => (
-              <li className="flex justify-between" key={index}>
-                <div className="flex gap-x-2">
-                  <img
-                    src={todo.checked ? tickbox : square}
-                    alt=""
-                    onClick={() => handleToggleCheck(index)}
-                  />{" "}
-                  <input
-                    type="text"
-                    className="rounded caret-sky-200 bg-transparent text-white w-56"
-                    placeholder="Type something ..."
-                    value={todo.description}
-                    onChange={(e) =>
-                      handleUpdateDescription(index, e.target.value)
-                    }
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter') {
-                        handleAddTodo();
-                      }}}
-                  />
-                </div>
-                <div className="flex gap-x-2">
-                  <button onClick={() => handleDeleteTodo(index)}>
-                    <img src={deleteic} alt="" className="h-4 w-4" />
-                  </button>
-                  <button>
-                    <img src={edit} alt="" className="h-4 w-4" />
-                  </button>
-                </div>
-              </li>
-            ))} 
-          </ul>)}
+          {todos.length > 0 && (
+            <ul className="flex flex-col  h-20 overflow-y-auto">
+              {todos.map((todo, index) => (
+                <li className="flex justify-between" key={index}>
+                  <div className="flex gap-x-2">
+                    <img
+                      src={todo.checked ? tickbox : square}
+                      alt=""
+                      onClick={() => handleToggleCheck(index)}
+                    />{" "}
+                    <input
+                      type="text"
+                      className="rounded caret-sky-200 bg-transparent text-white w-56"
+                      placeholder="Type something ..."
+                      value={todo.description}
+                      onChange={(e) =>
+                        handleUpdateDescription(index, e.target.value)
+                      }
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          handleAddTodo();
+                        }
+                      }}
+                    />
+                  </div>
+                  <div className="flex gap-x-2">
+                    <button onClick={() => handleDeleteTodo(index)}>
+                      <img src={deleteic} alt="" className="h-4 w-4" />
+                    </button>
+                    <button>
+                      <img src={edit} alt="" className="h-4 w-4" />
+                    </button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
     </div>
