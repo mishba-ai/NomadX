@@ -116,7 +116,7 @@ function Wishlist() {
                 </div>
                 <button className="" onClick={() => handleToggleLike(index)}>
                   {" "}
-                  <div className="h-6 w-6 flex justify-center relative -top-[6.5rem] left-20 items-center bg-purple-400 rounded-full">
+                  <div className="h-6 w-6 flex justify-center relative -top-[6.5rem] left-20 items-center bg-[#9dc8f9] rounded-full">
                     <img
                       src={wishlist.Liked ? heartfill : heart}
                       className="h-4 w-4 "
@@ -141,6 +141,8 @@ function Wishlist() {
       </div>
 
       {showAddForm && (
+        <>
+        <div className="fixed inset-0 bg-black bg-opacity-50 backdrop:blur-3xl"></div>
         <div className="">
           <div className="flex absolute top-[35%] left-[40%] p-8 bg-black text-black w-96 h-56 z-10 bg-opacity-90 shadow-2xl border border-sky-200 flex-col font-montserrat">
             <button
@@ -192,6 +194,7 @@ function Wishlist() {
             </form>
           </div>
         </div>
+        </>
       )}
     </div>
   );

@@ -1,9 +1,9 @@
-import Header from "../../components/Search/Filter"
+import Filter from "../../components/Search/Filter/Filter"
 
 function search() {
   return (
     <div className="w-full h-screen ">
-      <Header/>
+      <Filter/>
     </div>
   )
 }

@@ -173,7 +173,7 @@ function Budget() {
                 </div>{" "}
                 <div className="">
                   {" "}
-                  <span className=" h-5 flex items-center justify-center rounded-3xl  text-xs p-2 bg-purple-400 text-white">
+                  <span className=" h-5 flex items-center justify-center rounded-3xl  text-xs p-2 bg-[#9dc8f9] text-white">
                     {budget.amount}$
                   </span>
                 </div>

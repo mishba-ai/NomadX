@@ -50,7 +50,7 @@ function WorldCities() {
         pointResolution={2}//point resolution is for the number of points on the circle of the point 
        //make points circular instead of square
        
-        pointAltitude={0.03} //point altitude is for the height of the points
+        pointAltitude={0.05} //point altitude is for the height of the points
 
        
       />
