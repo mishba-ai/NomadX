@@ -1,5 +1,6 @@
-import React ,{Suspense}from "react";
-import ReactDOM from "react-dom/client";
+import React from "react";
+// import ReactDOM from "react-dom/client";
+import { createRoot } from "react-dom/client";
 
 import "./index.css";
 
@@ -21,8 +22,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // import routes from "./routes/routes.js";
 import Calendar from "./Pages/Calendar/TravelCalendar.jsx";
 
-const router = createBrowserRouter(
-  [
+const router = createBrowserRouter([
   {
     path: "/",
     element: <Landing />,
@@ -33,7 +33,6 @@ const router = createBrowserRouter(
   },
 
   {
-    
     element: <Layout />,
     children: [
       {
@@ -83,14 +82,11 @@ const router = createBrowserRouter(
   },
 ]);
 
-
-ReactDOM.createRoot(document.getElementById("root")).render(
+const root = createRoot(document.getElementById("root"));
+root.render(
   <React.StrictMode>
-   
     {/* <Suspense fallback={"loading"}>  */}
-       <RouterProvider router={router} />
-       {/* </Suspense>   */}
+    <RouterProvider router={router} />
+    {/* </Suspense>   */}
   </React.StrictMode>
 );
-
-

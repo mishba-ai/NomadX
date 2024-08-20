@@ -1,54 +1,85 @@
 import { useState } from "react";
+import search from "../../../assets/svg/search.svg";
+import ShowDestination from "./Core Filters/ShowDestination.jsx";
 
 function Filter() {
   // const [Selected, setSelected] = useState("");
+  const [showAddDestination, setShowAddDestination] = useState(false);
+
+  const selectDestination = () => {
+    setShowAddDestination(prevState => !prevState);
+  };
+
   return (
-    <div className="flex  sticky top-10 justify-center font-robotomono">
-      <div className=" z-50  w-[803px] rounded-full h-16 flex bg-[#000000] text-[#d1d5db] ">
-        <div className="">
-          <ul className="flex gap-x-2 text-gray-500">
-            <li className="w-64">
-              <div className="">
-                <button className="rounded-full w-64 active:bg-gray-200 hover:bg-white hover:bg-opacity-15 h-16">
-                  <div className="flex flex-col px-6 py-1 place-items-start">
-                    <p className="  text-start text-gray-500">Where</p>
-                    <input
-                      type=" flex "
-                      className="bg-transparent "
-                      placeholder="Search Destination"
-                    />
-                  </div>
-                </button>
-              </div>
-            </li>
-            <li className="w-[17.2rem] flex gap-x-1">
-              <hr className="border-gray-900  border h-8 my-4" />
-              <div className="">
-                <button className="rounded-full w-32 h-16 hover:bg-slate-50 hover:bg-opacity-15">
-                  <div className="flex flex-col text-s text-start px-2">
-                    <p className="text-gray-500 ">Start Adventure </p>
-                    <p>Add Dates</p>
-                  </div>
-                </button>
-              </div>{" "}
-              <hr className="border-gray-900  border h-8 my-4" />
-              <div className="">
-                <button className="rounded-full  w-32 h-16 hover:bg-slate-50 hover:bg-opacity-15"><div className="flex flex-col">
-                    <p className="text-gray-500">End Addventure</p>
-                    <p>Add Dates</p>
-                  </div></button>
-              </div>
-              <hr className="border-gray-900  border h-8 my-4" />
-            </li>
-            <li className="w-64 ">
-              <div className="rounded-full w-64 flex justify-end items-center  hover:bg-slate-50 hover:bg-opacity-15 h-16 ">
-                {/* <button className="w-12 h-12 bg-white rounded-full"></button> */}
-              </div>{" "}
-            </li>
-          </ul>
+    <>
+      <div className="flex   sticky top-10 justify-center font-robotomono">
+        <div className=" z-50  w-[826px] rounded-full h-16 flex bg-[#000] border border-[#374754] text-[#d1d5db] ">
+          <div className="">
+            <ul className="flex gap-x-2 text-gray-500">
+              <li className="w-64 ">
+                <div className="">
+                  <button
+                    className="rounded-full w-64 active:bg-[#c6dee1] hover:text-black hover:bg-[#c6dee1] h-16"
+                    onClick={() => selectDestination()}
+                  >
+                    <div className="flex flex-col px-6 py-1 place-items-start">
+                      <p className="  text-start text-gray-500">Where</p>
+                      <input
+                        type=" flex "
+                        className="bg-transparent "
+                        placeholder="Search Destination"
+                      />
+                    </div>
+                  </button>
+                </div>
+              </li>
+              <li className="w-[18.6rem] flex gap-x-1">
+                <hr className="border-gray-900  border h-8 my-4" />
+                <div className="">
+                  <button className="rounded-full w-36 px-2 h-16 active:bg-[#c6dee1] hover:text-black hover:bg-[#c6dee1] ">
+                    <div className="flex flex-col active:text-black text-s text-start px-2">
+                      <p className="text-gray-0 ">Start Adventure </p>
+                      <p>Add Dates</p>
+                    </div>
+                  </button>
+                </div>{" "}
+                <hr className="border-gray-900  border h-8 my-4" />
+                <div className="">
+                  <button className="rounded-full  w-36 px-3  h-16 active:bg-[#c6dee1] hover:text-black hover:bg-[#c6dee1]">
+                    <div className="flex flex-col text-start">
+                      <p className="text-gray-500">End Addventure</p>
+                      <p>Add Dates</p>
+                    </div>
+                  </button>
+                </div>
+                <hr className="border-gray-900  border h-8 my-4" />
+              </li>
+              <li className="w-64 ">
+                <div>
+                  <button className="rounded-full w-64 flex justify-between py-2 px-3 active:bg-[#c6dee1] hover:text-black hover:bg-[rgb(198,222,225)] h-16 ">
+                    <div className="">
+                      <p className="text-start">Add more filter</p>
+                    </div>
+                    <div className="flex justify-end ">
+                      <button className="w-12 h-12  bg-[#b4dff4] rounded-full flex justify-center items-center hover:bg-[#a7e3fe]">
+                        <img src={search} alt="search" />
+                      </button>
+                    </div>
+                  </button>{" "}
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-    </div>
+      </div>{" "}
+
+      {showAddDestination && (
+        <div className="ml-96 flex mt-14 ">
+          {" "}
+          <ShowDestination />{" "}
+        </div>
+      )}
+    </>
   );
 }
 
