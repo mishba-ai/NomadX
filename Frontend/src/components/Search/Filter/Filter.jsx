@@ -42,8 +42,8 @@ function Filter() {
 
   return (
     <>
-      <div className="flex   sticky top-10 justify-center font-robotomono">
-        <div className=" z-50  w-[826px] rounded-full h-16 flex bg-[#000] border border-[#374754] text-[#d1d5db] ">
+      <div className="flex   sticky top-10 justify-center font-robotomono z-40">
+        <div className=" z-40  w-[826px] rounded-full h-16 flex bg-[#000] border border-[#374754] text-[#d1d5db] ">
           <div className="">
             <ul className="flex gap-x-2 text-gray-500">
               <li className="w-64 ">
@@ -112,19 +112,19 @@ function Filter() {
         </div>
       </div>{" "}
       {showAddDestination && (
-        <div className="ml-96 flex mt-14 " ref={pickerRef}>
+        <div className="ml-96 flex mt-14 z-50 " ref={pickerRef}>
           {" "}
           <ShowDestination />{" "}
         </div>
       )}
       {showDateRangePicker && (
-        <div className="ml-[22.2rem] flex mt-14 " ref={pickerRef}>
+        <div className="ml-[22.2rem] flex mt-14 z-50" ref={pickerRef}>
           {" "}
           <Showdatepicker />{" "}
         </div>
       )}
       {showMoreFilters && (
-        <div className="ml-[22.2rem] flex mt-14 "ref={pickerRef}>
+        <div className="ml-[22.2rem] flex mt-14 z-50"ref={pickerRef}>
           {" "}
           <Addmorefilters />{" "}
         </div>
