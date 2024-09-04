@@ -1,16 +1,35 @@
 import Filter from "../../components/Search/Filter/Filter";
 import Nomadmap from "../../components/Search/Map/Nomadmap";
+import CityOverview from "../../components/Search/CityOverview/CityOverview";
+import { useState } from "react";
 
-function search() {
+function Search() {
+  const [selectedCity, setSelectedCity] = useState(null);
+  const [showCityOverview, setShowCityOverview] = useState(false); 
+
+  const selectCity = (city) => {
+    setSelectedCity(city);
+    setShowCityOverview(true);
+  };
+
+  const handleBackButton = () =>{
+    setSelectedCity(null);
+    setShowCityOverview(false);
+  }
   return (
-    <div className="w-full h-screen flex flex-col bg-[#070707]">
-      <Filter />
+    <>
+      {" "}
+      {/* {!selectedCity && (
+        <div className="w-full h-screen flex flex-col bg-[#070707]">
+          <Filter /> <Nomadmap selectcity={selectCity} />{" "}
+        </div>
+      )} */}
 
-        {" "}
-        <Nomadmap />
-     
-    </div>
+      {showCityOverview ? ( <CityOverview city={selectedCity} onBack={handleBackButton} />) :(<div className="w-full h-screen flex flex-col bg-[#070707]">
+          <Filter /> <Nomadmap selectcity={selectCity} />{" "}
+        </div>)}
+    </>
   );
 }
 
-export default search;
+export default Search;

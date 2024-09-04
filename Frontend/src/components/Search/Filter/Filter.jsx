@@ -5,7 +5,7 @@ import Showdatepicker from "./Core Filters/Showdatepicker.jsx";
 import Addmorefilters from "./Core Filters/Addmorefilters.jsx";
 
 function Filter() {
-  // const [Selected, setSelected] = useState("");
+
   const [showAddDestination, setShowAddDestination] = useState(false);
   const [showDateRangePicker, setShowDateRangePicker] = useState(false);
   const [showMoreFilters, setShowMoreFilters] = useState(false);
@@ -39,6 +39,10 @@ function Filter() {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  //to render the city places
+
+  
 
   return (
     <>
@@ -129,6 +133,8 @@ function Filter() {
           <Addmorefilters />{" "}
         </div>
       )}
+
+
     </>
   );
 }

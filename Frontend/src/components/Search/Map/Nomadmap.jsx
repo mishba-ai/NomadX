@@ -1,10 +1,13 @@
-import { useEffect } from "react";
+import { useEffect ,useState} from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import markermap from "../../../assets/svg/markermap.svg";
+import PropTypes from 'prop-types';
 
-function Nomadmap() {
+
+function Nomadmap({selectcity}) {
+  
 
     const cities = [
         {name: "Dubai", lat: 25.276987, lon: 55.296249, image: "https://cdn.britannica.com/15/189715-050-4310222B/Dubai-United-Arab-Emirates-Burj-Khalifa-top.jpg", details: "Modern city with great infrastructure for digital nomads."},
@@ -47,7 +50,7 @@ function Nomadmap() {
                   </p>
                 </div>
                 <div className="px-6 pt-4 pb-2">
-                  <button className="bg-sky-100 hover:bg-sky-200 text-black font-bold py-2 px-4 rounded">
+                  <button onClick={() => selectcity(city)} className="bg-sky-100 hover:bg-sky-200 text-black font-bold py-2 px-4 rounded">
                     Learn More
                   </button>
                 </div>
@@ -56,8 +59,11 @@ function Nomadmap() {
           </Marker>
         ))}
       </MapContainer>
+      
     </div>
   );
 }
-
+Nomadmap.propTypes = {
+  selectcity: PropTypes.func.isRequired
+};
 export default Nomadmap;

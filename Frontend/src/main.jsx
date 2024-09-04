@@ -9,7 +9,7 @@ import Home from "./Pages/Home/Home.jsx";
 import Landing from "./Pages/landing/Landing.jsx";
 import Setting from "./Pages/Setting/Setting.jsx";
 import Forum from "./Pages/Forum/Forum.jsx";
-import Search from "./Pages/search/search.jsx";
+import Search from "./Pages/search/Search.jsx";
 import Profile from "./Pages/Setting/Profile.jsx";
 import Layout from "./Layout.jsx";
 import Lens from "./Pages/Lens/Lens.jsx";
