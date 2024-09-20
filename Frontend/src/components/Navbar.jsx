@@ -48,35 +48,45 @@ function Navbar() {
           </NavLink>
           <NavLink to="/Calendar">
             <Tooltip text={"Calendar"}>
-              <button  className={`${isCurrentPath("/Calendar") ? "w-8 h-8 p-1 flex justify-center bg-sky-200 bg-opacity-20  items-center rounded-lg " : "w-8 h-8 hover:bg-slate-300 hover:bg-opacity-15 p-1 flex justify-center items-center rounded-lg"}`}>
+              <button
+                className={`${isCurrentPath("/Calendar") ? "w-8 h-8 p-1 flex justify-center bg-sky-200 bg-opacity-20  items-center rounded-lg " : "w-8 h-8 hover:bg-slate-300 hover:bg-opacity-15 p-1 flex justify-center items-center rounded-lg"}`}
+              >
                 <img src={calendar} alt="" />
               </button>
             </Tooltip>
           </NavLink>
           <NavLink to="/Forum">
             <Tooltip text={"Forum"}>
-              <button  className={`${isCurrentPath("/Forum") ? "w-8 h-8 flex justify-center bg-sky-200 bg-opacity-20  items-center rounded-lg " : "w-8 h-8 hover:bg-slate-300 hover:bg-opacity-15  flex justify-center items-center rounded-lg"}`}>
+              <button
+                className={`${isCurrentPath("/Forum") ? "w-8 h-8 flex justify-center bg-sky-200 bg-opacity-20  items-center rounded-lg " : "w-8 h-8 hover:bg-slate-300 hover:bg-opacity-15  flex justify-center items-center rounded-lg"}`}
+              >
                 <img src={Community} alt="" />
               </button>
             </Tooltip>
           </NavLink>
           <NavLink to={"/settings/profile/contact"}>
             <Tooltip text={"settings"}>
-              <button  className={`${isActivePath("/settings/profile") ? "w-8 h-8 p-1 flex justify-center bg-sky-200 bg-opacity-20  items-center rounded-lg " : "w-8 h-8 hover:bg-slate-300 hover:bg-opacity-15 p-1 flex justify-center items-center rounded-lg"}`}>
+              <button
+                className={`${isActivePath("/settings/profile") ? "w-8 h-8 p-1 flex justify-center bg-sky-200 bg-opacity-20  items-center rounded-lg " : "w-8 h-8 hover:bg-slate-300 hover:bg-opacity-15 p-1 flex justify-center items-center rounded-lg"}`}
+              >
                 <img src={settings} alt="" />
               </button>
             </Tooltip>
           </NavLink>
           <NavLink to={"/search"}>
             <Tooltip text={"Search"}>
-              <button  className={`${isCurrentPath("/search") ? "w-8 h-8 flex justify-center bg-sky-200 bg-opacity-20  items-center rounded-lg " : "w-8 h-8 hover:bg-slate-300 hover:bg-opacity-15  flex justify-center items-center rounded-lg"}`}>
+              <button
+                className={`${isCurrentPath("/search") ? "w-8 h-8 flex justify-center bg-sky-200 bg-opacity-20  items-center rounded-lg " : "w-8 h-8 hover:bg-slate-300 hover:bg-opacity-15  flex justify-center items-center rounded-lg"}`}
+              >
                 <img src={search} alt="" />
               </button>
             </Tooltip>
           </NavLink>
           <NavLink to="/lens">
             <Tooltip text={"Lens"}>
-              <button  className={`${isCurrentPath("/Lens") ? "w-8 h-8 p-1 flex justify-center bg-sky-200 bg-opacity-20  items-center rounded-lg " : "w-8 h-8 hover:bg-slate-300 hover:bg-opacity-15 p-1 flex justify-center items-center rounded-lg"}`}>
+              <button
+                className={`${isCurrentPath("/Lens") ? "w-8 h-8 p-1 flex justify-center bg-sky-200 bg-opacity-20  items-center rounded-lg " : "w-8 h-8 hover:bg-slate-300 hover:bg-opacity-15 p-1 flex justify-center items-center rounded-lg"}`}
+              >
                 <img src={image} alt="" />
               </button>
             </Tooltip>

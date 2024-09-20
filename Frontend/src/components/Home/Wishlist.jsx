@@ -154,7 +154,6 @@ function Wishlist() {
             <h3 className="text-3xl text-sky-100 text-opacity-60 text-center">
               Add Wishlist
             </h3>
-
             <form
               action=""
               onSubmit={handleAddWishlists}
@@ -177,7 +176,9 @@ function Wishlist() {
                     className="hidden"
                     name=""
                     id=""
-                  /> {newImage && <img src={newImage} alt="Preview" className="w-12 h-12 object-cover rounded-lg" />}
+                  />
+                  
+                   {newImage && <img src={newImage} alt="Preview" className="w-12 h-12 object-cover rounded-lg" />}
                   <button
                     className="bg-sky-50 rounded-lg border-sky-200 bg-opacity-45 borde text-xs  p-3"
                     onClick={() => fileInputRef.current.click()}
