@@ -1,30 +1,33 @@
-import { Outlet, Navigate } from "react-router-dom";
-import Layout from "../Layout.jsx"; 
-
-// import Signup from "../Pages/Auth/Signup.jsx";
+// routes.js
+import Signup from "../Pages/Auth/Signup.jsx";
 import Home from "../Pages/Home/Home.jsx";
-// import Landing from "../Pages/landing/Landing.jsx";
+import Landing from "../Pages/landing/Landing.jsx";
 import Setting from "../Pages/Setting/Setting.jsx";
 import Forum from "../Pages/Forum/Forum.jsx";
-import Search from "../Pages/search/search.jsx";
+import Search from "../Pages/search/Search.jsx";
 import Profile from "../Pages/Setting/Profile.jsx";
+import Layout from "../Layout.jsx";
 import Lens from "../Pages/Lens/Lens.jsx";
 import About from "../components/settings/Profile/About.jsx";
 import Contact from "../components/settings/Profile/Contact.jsx";
 import Discussion from "../components/settings/Profile/Discussion.jsx";
 import Travel from "../components/settings/Profile/Travel.jsx";
 import Password from "../Pages/Setting/Password.jsx";
-import Calendar from "../Pages/Calendar/Calendar.jsx";
+import Calendar from "../Pages/Calendar/TravelCalendar.jsx";
+import PrivateRoutes from "./PrivateRoutes.jsx";
+import Notfound from "../Pages/Notfound.jsx";
 
-// const PrivateRoutes = () => {
-//   return(
-// <Layout><Outlet/></Layout>
-//   )
-// }
+const routes = [
 
- const PrivateRoutes = [
+  { path: "/", element: <Landing /> },
+  { path: "signup", element: <Signup /> },
+  { path:"*", element: <Notfound /> },
   {
-    element: <Layout />,
+    element: (
+      <PrivateRoutes>
+        <Layout />
+      </PrivateRoutes>
+    ),
     children: [
       { path: "home", element: <Home /> },
       { path: "forum", element: <Forum /> },
@@ -47,14 +50,11 @@ import Calendar from "../Pages/Calendar/Calendar.jsx";
               { path: "travel", element: <Travel /> },
             ],
           },
-          {
-            path: "password",
-            element: <Password />,
-          },
+          { path: "password", element: <Password /> },
         ],
       },
     ],
   },
 ];
 
-export default PrivateRoutes;
+export default routes;
