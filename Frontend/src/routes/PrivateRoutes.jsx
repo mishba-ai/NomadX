@@ -6,7 +6,7 @@ import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants.js";
 import proptypes from "prop-types";
 
 export default function PrivateRoutes({ children }) {
-  const [isAuthorized, setIsAuthorized] = useState(false);
+  const [isAuthorized, setIsAuthorized] = useState(null);
 
   useEffect(() => {
     auth().catch(() => setIsAuthorized(false));
@@ -53,7 +53,7 @@ export default function PrivateRoutes({ children }) {
     return <div>Loading...</div>;
   }
 
-  return isAuthorized ? children : <Navigate to="/login" />;
+  return isAuthorized ? children : <Navigate to="/signin" />;
 }
 
 PrivateRoutes.propTypes = {

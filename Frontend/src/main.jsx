@@ -7,7 +7,7 @@ import routes from "./routes/routes.jsx";
 
 function Logout() {
   localStorage.clear();
-  return <Navigate to="/login" />;
+  return <Navigate to="/signin" />;
 }
 
 function RegisterAndLogout() {

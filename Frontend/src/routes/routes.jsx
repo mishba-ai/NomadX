@@ -1,5 +1,6 @@
 // routes.js
 import Signup from "../Pages/Auth/Signup.jsx";
+import Signin from "../Pages/Auth/Signin.jsx";
 import Home from "../Pages/Home/Home.jsx";
 import Landing from "../Pages/landing/Landing.jsx";
 import Setting from "../Pages/Setting/Setting.jsx";
@@ -18,10 +19,10 @@ import PrivateRoutes from "./PrivateRoutes.jsx";
 import Notfound from "../Pages/Notfound.jsx";
 
 const routes = [
-
   { path: "/", element: <Landing /> },
   { path: "signup", element: <Signup /> },
-  { path:"*", element: <Notfound /> },
+  { path: "signin", element: <Signin /> },
+  { path: "*", element: <Notfound /> },
   {
     element: (
       <PrivateRoutes>

@@ -8,6 +8,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import WorldCities from "../../components/Globe/worldcities.jsx";
 import TravelCalendar from "../Calendar/TravelCalendar.jsx";
+import api from "../../api.js";
 
 function Home() {
   const [user, setUser] = useState("");
