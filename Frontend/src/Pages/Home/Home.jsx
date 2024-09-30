@@ -12,17 +12,23 @@ import api from "../../api.js";
 
 function Home() {
   const [user, setUser] = useState("");
-  useEffect(() => {
-    const fetchUsername = async () => {
-      try {
-        const response = await axios.get("/api/user");
-        setUser(response.data.user.username);
-      } catch (error) {
-        console.error("error fetching username", error);
-      }
-    };
-    fetchUsername();
-  }, []);
+  // useEffect(() => {
+  //   const fetchUsername = async () => {
+  //     try {
+  //       const response = await api.get("/api/user",{
+  //         headers:{'Authorization':`Token ${localStorage.getItem('token')}`}
+  //       });
+  //       if (response.data && response.data.username) {
+  //         setUser(response.data.username);
+  //       } else {
+  //         console.error('Username not found in response:', response.data);
+  //       }
+  //     } catch (error) {
+  //       console.error("error fetching username", error);
+  //     }
+  //   };
+  //   fetchUsername();
+  // }, []);
 
   return (
     <>

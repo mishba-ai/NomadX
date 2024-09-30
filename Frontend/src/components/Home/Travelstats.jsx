@@ -4,6 +4,7 @@ import {
 } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { useState, useEffect } from "react";
+import api from "../../api"
 
 function Travelstats() {
   const [travelStats, setTravelStats] = useState({
@@ -40,19 +41,26 @@ function Travelstats() {
   ];
 
   // fetchTravelStats function to fetch the travel stats
-  const fetchTravelStats = async () => {
-    try {
-      const response = await fetch("/api/travel-stats");
-      const data = await response.json();
-      setTravelStats(data);
-    } catch (error) {
-      console.error("error fetching travel stats", error);
-    }
-  };
+  // const fetchTravelStats = async () => {
+  //   try {
+  //     const response = await api.get('/api/travel-stats/', {
+  //       headers: {
+  //         'Authorization': `Token ${localStorage.getItem('token')}`
+  //       }
+  //     });
+  //     setTravelStats(response.data);
+  //   } catch (error) {
+  //     console.error('Error fetching travel stats:', error);
+  //     if (error.response) {
+  //       console.error('Response data:', error.response.data);
+  //       console.error('Response status:', error.response.status);
+  //     }
+  //   }
+  // };
 
-  useEffect(() => {
-    fetchTravelStats();
-  }, []);
+  // useEffect(() => {
+  //   fetchTravelStats();
+  // }, []);
   return (
     <div className="mt-8">
       <h3 className="font-medium text-sm font-montserrat">

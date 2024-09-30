@@ -1,6 +1,6 @@
 import { useState } from "react";
 import api from "../../api.js";
-import { ACCESS_TOKEN ,REFRESH_TOKEN} from "../../constants.js";
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "../../constants.js";
 import { useNavigate } from "react-router-dom";
 import proptypes from "prop-types";
 import Arrow from "../../assets/svg/Arrow.svg";
@@ -13,19 +13,32 @@ export default function Authform({ route, method }) {
   const [loading, setLoading] = useState(false);
   const [confitmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     setLoading(true);
+    setError("");
     e.preventDefault();
-
+    if (method === "signup" && password !== confitmPassword) {
+      setError("Password and Confirm Password do not match");
+      setLoading(false);
+      return;
+    }
     try {
-      const res = await api.post(route, { username, password });
+      // For signup, include email. For signin, only send username and password
+      const payload =
+        method === "signup"
+          ? { username, password, email }
+          : { username, password };
+
+      const res = await api.post(route, payload);
+
       if (method === "signin") {
         localStorage.setItem(ACCESS_TOKEN, res.data.access);
         localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
-        navigate("/home")
-      }else{
-        navigate("/signin")
+        navigate("/home");
+      } else {
+        navigate("/signin");
       }
     } catch (error) {
       alert(error);
@@ -53,12 +66,14 @@ export default function Authform({ route, method }) {
 
           <div className="w-1/2">
             <h3 className="font-semibold text-gray-400 text-sm">
-              {method === "signup" ? "START FOR FREE" :""}
+              {method === "signup" ? "START FOR FREE" : ""}
             </h3>
-            <h1 className="text-4xl font-bold mt-4">{method === "signup" ? "Create new account" : "Welcome!!"}</h1>
+            <h1 className="text-4xl font-bold mt-4">
+              {method === "signup" ? "Create new account" : "Welcome!!"}
+            </h1>
             <h4 className="font-medium text-xs mt-4 text-gray-400">
               {method === "signup" ? "Already A Member?" : "Not yet a Member"}{" "}
-              <span className="text-white hover:underline cursor-pointer">
+              <span className="text-white hover:underline cursor-pointer" type="button" onClick={() => navigate(method === "signup" ? "/signin" : "/signup")}>
                 {method === "signup" ? "Sign in" : "Sign up"}
               </span>
             </h4>
@@ -67,54 +82,54 @@ export default function Authform({ route, method }) {
               onSubmit={handleSubmit}
               className="mt-8 flex text-black flex-wrap gap-3 font-mono gap-y-10"
             >
-             
-                <input
-                  type="text"
-                  placeholder="Username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  className="px-4  rounded-lg w-[447px] opacity-[0.45] py-3"
-                />
-             
+              <input
+                type="text"
+                placeholder="Username"
+                required
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                className="px-4  rounded-lg w-[447px] opacity-[0.45] py-3"
+              />
 
-              {/* <input
-              type="text"
-              placeholder="Last Name"
-              className="px-4 rounded-lg opacity-[0.45] w-54 py-3"
-            /> */}
-             {/* {method === "signup" && (
-              <label>
+              {method === "signup" && (
                 <input
                   type="email"
                   placeholder="Email"
+                  required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="px-4 rounded-lg opacity-[0.45] w-[447px] py-3"
                 />
-              </label>
-             )} */}
+              )}
               <input
                 type="password"
                 placeholder="Password"
+                required
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
-                className={`px-4 rounded-lg opacity-[0.45] text-black {${method === "signup" ? "w-54" : "w-full"}} py-3`}
+                className={`px-4 rounded-lg opacity-[0.45] text-black ${method === "signup" ? "w-54" : "w-[447px]"} py-3`}
               />
+              
               {method === "signup" && (
                 <input
                   type="password"
+                  required
                   placeholder="Confirm Password"
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   value={confitmPassword}
                   className="px-4 rounded-lg opacity-[0.45] text-black w-54 py-3 "
                 />
               )}
+              {error && <p className="text-red-500 text-sm">{error}</p>}
+
               <div className="flex gap-x-6 w-[447px]">
-                <button className="w-52  bg-white text-black hover:text-white hover:bg-black hover:border   justify-center gap-x-2 font-montserrat font-bold text-lg py-2 rounded-3xl  opacity-[0.45]">
-                  Change Method{" "}
+                <button className="w-64  bg-white text-black hover:text-white hover:bg-black hover:border   justify-center gap-x-2 font-montserrat font-bold  py-2 rounded-3xl  opacity-[0.45]">
+                  Sign up with google
                 </button>
-                <button className="w-[15.3rem]  bg-white text-black hover:text-white hover:bg-black hover:border   justify-center gap-x-2 font-montserrat font-bold text-2xl py-2 rounded-3xl flex "
-                type="submit">
+                <button
+                  className="w-[14rem]  bg-white text-black hover:text-white hover:bg-black hover:border   justify-center gap-x-2 font-montserrat font-bold text-2xl py-2 rounded-3xl flex "
+                  type="submit"
+                >
                   Go Nomad{" "}
                   <span>
                     <img src={Arrow} className="pt-1" alt="arrow" />
