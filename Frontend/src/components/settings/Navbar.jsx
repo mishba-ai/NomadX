@@ -4,7 +4,7 @@ import password from "../../assets/svg/settings/password.svg";
 import theme from "../../assets/svg/settings/theme.svg";
 import { NavLink } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import { useState } from "react";
+// import { useState } from "react";
 
 function Navbar() {
   const location = useLocation();
