@@ -4,31 +4,31 @@ import Wishlist from "../../components/Home/Wishlist.jsx";
 import Location from "../../components/Location.jsx";
 import Travelstats from "../../components/Home/Travelstats.jsx";
 import Progressbar from "../../components/Progressbar.jsx";
-import axios from "axios";
 import { useState, useEffect } from "react";
 import WorldCities from "../../components/Globe/worldcities.jsx";
 import TravelCalendar from "../Calendar/TravelCalendar.jsx";
 import api from "../../api.js";
 
 function Home() {
-  const [user, setUser] = useState("");
-  // useEffect(() => {
-  //   const fetchUsername = async () => {
-  //     try {
-  //       const response = await api.get("/api/user",{
-  //         headers:{'Authorization':`Token ${localStorage.getItem('token')}`}
-  //       });
-  //       if (response.data && response.data.username) {
-  //         setUser(response.data.username);
-  //       } else {
-  //         console.error('Username not found in response:', response.data);
-  //       }
-  //     } catch (error) {
-  //       console.error("error fetching username", error);
-  //     }
-  //   };
-  //   fetchUsername();
-  // }, []);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const fetchUsername = async () => {
+      try {
+        const response = await api.get("user/profile/", {
+          headers: {'Authorization': `Token ${localStorage.getItem('token')}`}
+        });
+        if (response.data && response.data.username) {
+          setUser(response.data.username);
+        } else {
+          console.error('Username not found in response:', response.data);
+        }
+      } catch (error) {
+        console.error("error fetching username", error);
+      }
+    };
+    fetchUsername();
+  }, []);
 
   return (
     <>

@@ -1,14 +1,31 @@
 import { useState, useEffect, useRef } from "react";
+import PropTypes from "prop-types";
 import search from "../../../assets/svg/search.svg";
 import ShowDestination from "./Core Filters/ShowDestination.jsx";
 import Showdatepicker from "./Core Filters/Showdatepicker.jsx";
-import Addmorefilters from "./Core Filters/Addmorefilters.jsx";
+import Addmorefilters from "./secondary Filters/Addmorefilters.jsx";
 
-function Filter() {
-
+function Filter({ onSearch }) {
+  const [coreFilters, setCoreFilters] = useState({});
+  const [secondaryFilters, setSecondaryFilters] = useState({});
   const [showAddDestination, setShowAddDestination] = useState(false);
   const [showDateRangePicker, setShowDateRangePicker] = useState(false);
   const [showMoreFilters, setShowMoreFilters] = useState(false);
+
+  // handle the core filters change
+  const handleCoreFilterChange = (filters) => {
+    setCoreFilters(filters);
+  };
+
+  const handleSecondaryFilterChange = (filters) => {
+    setSecondaryFilters(filters);
+  };
+
+  const handleSearchClick = () => {
+    const combinedFilters = { ...coreFilters, ...secondaryFilters };
+    onSearch(combinedFilters);
+  };
+
   const selectDestination = () => {
     setShowAddDestination((prevState) => !prevState);
   };
@@ -29,7 +46,7 @@ function Filter() {
         !event.target.closest(".showDestination") &&
         !event.target.closest(".showDateRangePicker") &&
         !event.target.closest(".addmorefilters")
-      ) { 
+      ) {
         setShowAddDestination(false);
         setShowDateRangePicker(false);
         setShowMoreFilters(false);
@@ -42,11 +59,9 @@ function Filter() {
 
   //to render the city places
 
-  
-
   return (
     <>
-      <div className="flex   sticky top-10 justify-center font-robotomono z-40">
+      <div className="flex sticky top-10 justify-center font-robotomono z-40">
         <div className=" z-40  w-[826px] rounded-full h-16 flex bg-[#000] border border-[#374754] text-[#d1d5db] ">
           <div className="">
             <ul className="flex gap-x-2 text-gray-500">
@@ -104,7 +119,10 @@ function Filter() {
                       <p className="text-start">Add more filter</p>
                     </div>
                     <div className="flex justify-end ">
-                      <button className="w-12 h-12  bg-[#b4dff4] rounded-full flex justify-center items-center hover:bg-[#a7e3fe]">
+                      <button 
+                        className="w-12 h-12  bg-[#b4dff4] rounded-full flex justify-center items-center hover:bg-[#a7e3fe]"
+                        onClick={handleSearchClick}
+                      >
                         <img src={search} alt="search" />
                       </button>
                     </div>
@@ -118,25 +136,26 @@ function Filter() {
       {showAddDestination && (
         <div className="ml-96 flex mt-14 z-50 " ref={pickerRef}>
           {" "}
-          <ShowDestination />{" "}
+          <ShowDestination onFilterChange={handleCoreFilterChange} />{" "}
         </div>
       )}
       {showDateRangePicker && (
         <div className="ml-[22.2rem] flex mt-14 z-50" ref={pickerRef}>
           {" "}
-          <Showdatepicker />{" "}
+          <Showdatepicker onFilterChange={handleCoreFilterChange} />{" "}
         </div>
       )}
       {showMoreFilters && (
-        <div className="ml-[22.2rem] flex mt-14 z-50"ref={pickerRef}>
+        <div className="ml-[22.2rem] flex mt-14 z-50" ref={pickerRef}>
           {" "}
-          <Addmorefilters />{" "}
+          <Addmorefilters onFilterChange={handleSecondaryFilterChange} />{" "}
         </div>
       )}
-
-
     </>
   );
 }
 
 export default Filter;
+Filter.propTypes = {
+  onSearch: PropTypes.func.isRequired,
+};

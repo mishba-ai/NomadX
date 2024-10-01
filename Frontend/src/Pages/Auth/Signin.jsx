@@ -2,7 +2,7 @@ import Authform from "./Authform";
 
 function Signin() {
   return (
-    <> <Authform route="/api/token/" method="signin"/></>
+    <> <Authform route="token/" method="signin"/></>
   );
 }
 

@@ -1,7 +1,14 @@
 import { useState, useEffect } from "react";
+import api from "../../../api";
+
+const travelCategories = [
+  { key: "destinations", label: "Destinations Visited" },
+  { key: "countries", label: "Countries Explored" },
+  { key: "continents", label: "Continents Discovered" }
+];
 
 function Tinputs() {
-  const [Travelstats, setTravelstats] = useState({
+  const [travelStats, setTravelStats] = useState({
     destinations: 0,
     countries: 0,
     continents: 0,
@@ -13,54 +20,58 @@ function Tinputs() {
 
   const fetchTravelStats = async () => {
     try {
-      const response = await fetch("/api/travelstats");
-      const data = await response.json();
-      setTravelstats(data);
+      const response = await api.get("/api/travelstats");
+      setTravelStats(response.data);
     } catch (error) {
-      console.error("error fetching travelstats", error);
+      console.error("Error fetching travel stats:", error);
     }
   };
 
-  // handleInputChange function to handle input change for the progress bar percentage
   const handleInputChange = (e, key) => {
-    const value = Math.min(Math.max(parseInt(e.target.value) || 0, 0), 100); // clamp the value between 0 and 100
-    setTravelstats((prev) => ({ ...prev, [key]: value })); // update the state with the new value
+    const value = Math.min(Math.max(parseInt(e.target.value) || 0, 0), 100);
+    setTravelStats(prev => ({ ...prev, [key]: value }));
   };
 
-  // handleSave function to save the progress bar values
   const handleSave = async () => {
     try {
-      await fetch("/api/travelstats", {
-        method: "post",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(Travelstats),
-      });
+      await api.post("/api/travelstats", travelStats);
       alert("Travel stats saved successfully");
     } catch (error) {
-      console.error("error saving travel stats", error);
-      // alert('Error saving travel stats');
+      console.error("Error saving travel stats:", error);
+      alert("Error saving travel stats");
     }
   };
 
   return (
-    <div>
-      <h2>Travel stats settings</h2>
-      {/* this is for the object.entries to map through the object and display the key and value */}
-      {Object.entries(Travelstats).map(([key, value]) => (
-        <div key={key} className="">
-          {/* this label is for  use of this is to capitalize the first letter of the key because the key is a string*/} 
-          <label htmlFor="">{key.charAt(0).toUpperCase() + key.slice(1)}</label>
-          <input
-            type="number"
-            value={value}
-            onChange={(e) => handleInputChange(e, key)}
-            min="0"
-          />
-        </div>
-      ))}
-      <button onClick={handleSave}>Save Changes</button>
+    <div className="font-Robotomono text-gray-200 w-full max-w-[840px] mx-auto">
+      <h2 className="text-2xl font-semibold mb-6">Travel Stats Settings</h2>
+      <div className="space-y-6">
+        {travelCategories.map(({ key, label }) => (
+          <div key={key} className="flex flex-col">
+            <label
+              htmlFor={key}
+              className="relative top-3 z-10 left-4 w-40 text-center bg-[#1c1c1c] text-sm uppercase text-gray-500"
+            >
+              {label}
+            </label>
+            <input
+              type="number"
+              id={key}
+              value={travelStats[key]}
+              onChange={(e) => handleInputChange(e, key)}
+              className="border-2 border-gray-700 bg-transparent px-4 py-3 text-lg rounded-2xl"
+              min="0"
+              max="100"
+            />
+          </div>
+        ))}
+        <button
+          onClick={handleSave}
+          className="mt-6 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition duration-300"
+        >
+          Save Travel Stats
+        </button>
+      </div>
     </div>
   );
 }

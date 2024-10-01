@@ -35,7 +35,9 @@ ALLOWED_HOSTS = ["*"]
 # this is the configuration for the rest framework so that we can use the JWT token for authentication and authorization 
 REST_FRAMEWORK = { 
     "DEFAULT_AUTHENTICATION_CLASSES": (
-        "rest_framework_simplejwt.authentication.JWTAuthentication"
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+   
+
     ),
     "DEFAULT_PERMISSION_CLASSES": (
         "rest_framework.permissions.IsAuthenticated",
@@ -60,6 +62,7 @@ INSTALLED_APPS = [
     'api.apps.ApiConfig',
     'rest_framework',
     'corsheaders',
+ 
 
 ]
 
