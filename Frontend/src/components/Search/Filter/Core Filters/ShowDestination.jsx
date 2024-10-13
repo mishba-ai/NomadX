@@ -1,6 +1,7 @@
 import { useState } from "react";
+import PropTypes from 'prop-types';
 
-function ShowDestination() {
+function ShowDestination({onDestinationSelect}) {
   const [Destinations, setDestinations] = useState([
     {
       image:
@@ -43,6 +44,11 @@ function ShowDestination() {
       name: "Australia",
     },
   ]);
+
+  const handleDestinationClick = (destinationName) => {
+    onDestinationSelect(destinationName);
+  };
+
   return (
     <div>
       <div className="w-[32.4rem] h-80 rounded-3xl  bg-black shadow-sm border border-slate-800 shadow-slate-800 p-4 font-montserrat">
@@ -52,7 +58,7 @@ function ShowDestination() {
             {" "}
             {Destinations.map((destination, index) => (
               <li 
-                key={index} onClick={""}
+                key={index} onClick={() => handleDestinationClick(destination.name)}
                 className="group relative cursor-pointer w-28 rounded-md h-28 border bg-cover bg-no-repeat bg-center"
                 style={{
                   backgroundImage: `url("${destination.image}")`,
@@ -69,5 +75,7 @@ function ShowDestination() {
     </div>
   );
 }
-
+ShowDestination.propTypes = {
+  onDestinationSelect: PropTypes.func.isRequired,
+};
 export default ShowDestination;

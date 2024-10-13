@@ -17,6 +17,7 @@ import Password from "../Pages/Setting/Password.jsx";
 import Calendar from "../Pages/Calendar/TravelCalendar.jsx";
 import PrivateRoutes from "./PrivateRoutes.jsx";
 import Notfound from "../Pages/Notfound.jsx";
+import Theme from "../Pages/Setting/Theme.jsx";
 
 const routes = [
   { path: "/", element: <Landing /> },
@@ -52,6 +53,7 @@ const routes = [
             ],
           },
           { path: "password", element: <Password /> },
+          { path: "theme", element: <Theme /> },
         ],
       },
     ],

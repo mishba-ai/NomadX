@@ -13,8 +13,15 @@ function Filter({ onSearch }) {
   const [showMoreFilters, setShowMoreFilters] = useState(false);
 
   // handle the core filters change
-  const handleCoreFilterChange = (filters) => {
-    setCoreFilters(filters);
+  const handleCoreFilterChange = (filterName, value) => {
+    setCoreFilters(prevFilters => ({
+      ...prevFilters,
+      [filterName]: value
+    }));
+  };
+  const handleDestinationSelect = (destinationName) => {
+    handleCoreFilterChange('destination', destinationName);
+    setShowAddDestination(false);
   };
 
   const handleSecondaryFilterChange = (filters) => {
@@ -74,9 +81,12 @@ function Filter({ onSearch }) {
                     <div className="flex flex-col px-6 py-1 place-items-start">
                       <p className="  text-start text-gray-500">Where</p>
                       <input
-                        type=" flex "
-                        className="bg-transparent "
+                        type="text"
+                        className="bg-transparent"
                         placeholder="Search Destination"
+                        value={coreFilters.destination || ''}
+                        onChange={(e) => handleCoreFilterChange('destination', e.target.value)}
+                        readOnly
                       />
                     </div>
                   </button>
@@ -136,7 +146,7 @@ function Filter({ onSearch }) {
       {showAddDestination && (
         <div className="ml-96 flex mt-14 z-50 " ref={pickerRef}>
           {" "}
-          <ShowDestination onFilterChange={handleCoreFilterChange} />{" "}
+          <ShowDestination onFilterChange={handleCoreFilterChange} onDestinationSelect={handleDestinationSelect}/>{" "}
         </div>
       )}
       {showDateRangePicker && (
