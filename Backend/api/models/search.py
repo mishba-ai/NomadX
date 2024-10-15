@@ -5,6 +5,7 @@ from django.core.exceptions import ValidationError
 
 class Search(models.Model):
     CONTINENT_CHOICES = [
+        ('ANY','ANY'),
         ('AF','Africa'),
         ('AN','Antartica'),
         ('AS','Asia'),
@@ -69,8 +70,7 @@ class Search(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='searches')
     name = models.CharField(max_length=100)
-    cities = models.CharField(max_length=100, null=True, blank=True)
-    continent = models.CharField(max_length=2 ,choices=CONTINENT_CHOICES, null=True, blank=True)
+    continent = models.CharField(max_length=3 ,choices=CONTINENT_CHOICES, null=True, blank=True)
 
     #climate prefereces
     min_temp=models.IntegerField(null=True, blank=True)
@@ -113,9 +113,9 @@ class Search(models.Model):
     air_quality_index = models.PositiveSmallIntegerField(null=True, blank=True)
     low_allergen = models.BooleanField(default=False)
     clean_indoor_air = models.BooleanField(default=False)
-    loq_humidity = models.BooleanField(default=False)
+    low_humidity = models.BooleanField(default=False)
     low_pollution = models.BooleanField(default=False)
-    only_monitoring_Stations = models.BooleanField(default=False)
+    only_monitoring_stations = models.BooleanField(default=False)
 
     #internet quality
     internet_quality = models.PositiveSmallIntegerField(null=True, blank=True)
@@ -152,7 +152,12 @@ class Search(models.Model):
             raise ValidationError("Max temperature must be greater than min temperature.")
         
         #visa validation
-        visa_fields = ['visa_on_arrival', 'no_visa_required', 'e_visa_available', 'embassy_application']
+        visa_fields = [
+          bool(self.visa_on_arrival),
+          bool(self.no_visa_required),
+          bool(self.e_visa_available),
+          bool(self.embassy_application),
+        ]
 
         if sum(visa_fields) > 1:
             raise ValidationError("Please select only one visa requirement.")
