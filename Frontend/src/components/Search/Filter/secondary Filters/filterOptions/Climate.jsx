@@ -1,37 +1,74 @@
 import { useState } from "react";
 import propTypes from "prop-types";
+import api from "../../../../../api.js";
 
 function Climate({ onApplyFilters }) {
- const [minTemp,setMinTemp] = useState('');
- const [MaxTemp,setMaxTemp] = useState('');
- const [humidity,setHumidity] = useState('');
- const [weatherConditions,setWeatherConditions] = useState([]);
+  const [minTemp, setMinTemp] = useState("");
+  const [MaxTemp, setMaxTemp] = useState("");
+  const [humidity, setHumidity] = useState("");
+  const [weatherConditions, setWeatherConditions] = useState([]);
+  const [isloading,setIsLoading] = useState(false)
+  const [error,setError]=useState(null)
 
- // Function to handle the apply filters button
- const handleApplyFilters = () => {
-  const filters = {
-    minTemp: minTemp ? parseInt(minTemp) : null, // Convert to integer if not empty
-    maxTemp: MaxTemp ? parseInt(MaxTemp) : null, // Convert to integer if not empty
-    humidity,
-    weatherConditions
-  }
-  onApplyFilters(filters);
- }
+  // Function to handle the apply filters button
+  const handleApplyFilters = async () => {
+    setError (null)
+    const parsedFilters = {
+      minTemp: minTemp ? parseInt(minTemp) : null, // Convert to integer if not empty
+      maxTemp: MaxTemp ? parseInt(MaxTemp) : null, // Convert to integer if not empty
+      humidity,
+      weatherConditions,
+    };
+    try {
+      const response = await api.post("search/", 
+       parsedFilters);
+       onApplyFilters(parsedFilters, response.data);
+      // if (!response.ok){
+      //   throw new Error("error");
+      // }
+      console.log("response data:",response.data)
+      const climateData = await response.json();
+      onApplyFilters(parsedFilters, climateData);
+      // toast({
+      //   title: "Filters applied successfully",
+      //   description: "Your climate preferences have been updated.",
+      // });
+    }  catch (err) {
+      console.error("Error fetching climate data:", err);
+      if (err.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        console.error("Error data:", err.response.data);
+        console.error("Error status:", err.response.status);
+        setError(`Server error: ${err.response.status}. ${JSON.stringify(err.response.data)}`);
+      } else if (err.request) {
+        // The request was made but no response was received
+        console.error("Error request:", err.request);
+        setError("No response received from server. Please check your connection.");
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.error("Error message:", err.message);
+        setError(err.message);
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
- // Function to handle the weather conditions 
- const handleWeatherConditions = (condition) => {
-  // Update the weatherConditions state based on the selected condition
-  setWeatherConditions(prev => 
-    prev.includes(condition)
-      ? prev.filter(c => c !== condition) // If condition is already selected, remove it
-      : [...prev, condition] // If condition is not selected, add it
-  );
- }
+  // Function to handle the weather conditions
+  const handleWeatherConditions = (condition) => {
+    // Update the weatherConditions state based on the selected condition
+    setWeatherConditions(
+      (prev) =>
+        prev.includes(condition)
+          ? prev.filter((c) => c !== condition) // If condition is already selected, remove it
+          : [...prev, condition] // If condition is not selected, add it
+    );
+  };
   return (
     <div>
       <div className="w-full h-full  bg-[#000] rounded-xl text-white font-montserrat">
         <h2 className="text-2xl font-semibold mb-4">Climate Preferences</h2>
-
         <div className="space-y-2">
           <div>
             <label
@@ -44,8 +81,6 @@ function Climate({ onApplyFilters }) {
               <input
                 type="number"
                 id="minTemp"
-                min="-50"
-                max="50"
                 className="w-20 bg-[#1c1c1c] border border-gray-700 text-white rounded-lg p-2"
                 placeholder="Min"
                 value={minTemp}
@@ -55,8 +90,6 @@ function Climate({ onApplyFilters }) {
               <input
                 type="number"
                 id="maxTemp"
-                min="-50"
-                max="50"
                 className="w-20 bg-[#1c1c1c] border border-gray-700 text-white rounded-lg p-2"
                 placeholder="Max"
                 value={MaxTemp}
@@ -109,8 +142,12 @@ function Climate({ onApplyFilters }) {
 
           <div></div>
         </div>
+        {error && <p className="text-red-500 mt-2">{error}</p>}
 
-        <button className="mt- w-full bg-[#b4dff4] hover:bg-[#a7e3fe] text-black font-bold py-2 px-4 rounded-full transition duration-300" onClick={handleApplyFilters}>
+        <button
+          className="mt- w-full bg-[#b4dff4] hover:bg-[#a7e3fe] text-black font-bold py-2 px-4 rounded-full transition duration-300"
+          onClick={handleApplyFilters}
+        >
           Apply Climate Filters
         </button>
       </div>
@@ -118,8 +155,8 @@ function Climate({ onApplyFilters }) {
   );
 }
 
-Climate.propTypes = {
-  onApplyFilters: propTypes.func.isRequired
-}
+propTypes.Climate = {
+  onApplyFilters : propTypes.func.isRequired,
+};
 
-export default Climate
+export default Climate;
