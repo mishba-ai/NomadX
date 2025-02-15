@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import internet from "../../../../assets/svg/filter/internet.svg";
 import climate from "../../../../assets/svg/filter/climate.svg";
 import safety from "../../../../assets/svg/filter/safety.svg";
