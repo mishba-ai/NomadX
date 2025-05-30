@@ -9,7 +9,3 @@ sqlparse
 psycopg2-binary
 python-dotenv 
 django-filter==24.3
-beautifulsoup4==4.12.3
-aiohttp== 3.10.10
-asyncio==3.4.3
-multiprocessing==2.6.2.1
