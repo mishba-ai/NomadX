@@ -36,17 +36,18 @@ function Navbar() {
         </div>
         <div className="flex flex-col gap-y-6">
           {" "}
-          <NavLink to="/home">
+          <NavLink to="/dashboard">
             <Tooltip text={"Dashboard"}>
               <button
-                className={`${isCurrentPath("/home") ? "w-8 h-8 flex justify-center bg-sky-200 bg-opacity-20  items-center rounded-lg " : "w-8 h-8 hover:bg-slate-300 hover:bg-opacity-15  flex justify-center items-center rounded-lg"}`}
+                className={`${isCurrentPath("/dashboard") ? "w-8 h-8 flex justify-center bg-sky-200 bg-opacity-20  items-center rounded-lg " : "w-8 h-8 hover:bg-slate-300 hover:bg-opacity-15  flex justify-center items-center rounded-lg"}`}
               >
                 {" "}
                 <img src={suitcase} alt="" />
               </button>
             </Tooltip>
           </NavLink>
-          <NavLink to="/Calendar">
+          {/* calendar */}
+          {/* <NavLink to="/Calendar">
             <Tooltip text={"Calendar"}>
               <button
                 className={`${isCurrentPath("/Calendar") ? "w-8 h-8 p-1 flex justify-center bg-sky-200 bg-opacity-20  items-center rounded-lg " : "w-8 h-8 hover:bg-slate-300 hover:bg-opacity-15 p-1 flex justify-center items-center rounded-lg"}`}
@@ -54,13 +55,23 @@ function Navbar() {
                 <img src={calendar} alt="" />
               </button>
             </Tooltip>
-          </NavLink>
-          <NavLink to="/Forum">
+          </NavLink> */}
+          {/* forum */}
+          {/* <NavLink to="/Forum">
             <Tooltip text={"Forum"}>
               <button
                 className={`${isCurrentPath("/Forum") ? "w-8 h-8 flex justify-center bg-sky-200 bg-opacity-20  items-center rounded-lg " : "w-8 h-8 hover:bg-slate-300 hover:bg-opacity-15  flex justify-center items-center rounded-lg"}`}
               >
                 <img src={Community} alt="" />
+              </button>
+            </Tooltip>
+          </NavLink> */}
+          <NavLink to={"/home"}>
+            <Tooltip text={"explore"}>
+              <button
+                className={`${isCurrentPath("/home") ? "w-8 h-8 flex justify-center bg-sky-200 bg-opacity-20  items-center rounded-lg " : "w-8 h-8 hover:bg-slate-300 hover:bg-opacity-15  flex justify-center items-center rounded-lg"}`}
+              >
+                <img src={search} alt="" />
               </button>
             </Tooltip>
           </NavLink>
@@ -73,16 +84,8 @@ function Navbar() {
               </button>
             </Tooltip>
           </NavLink>
-          <NavLink to={"/search"}>
-            <Tooltip text={"Search"}>
-              <button
-                className={`${isCurrentPath("/search") ? "w-8 h-8 flex justify-center bg-sky-200 bg-opacity-20  items-center rounded-lg " : "w-8 h-8 hover:bg-slate-300 hover:bg-opacity-15  flex justify-center items-center rounded-lg"}`}
-              >
-                <img src={search} alt="" />
-              </button>
-            </Tooltip>
-          </NavLink>
-          <NavLink to="/lens">
+          {/* lens  */}
+          {/* <NavLink to="/lens">
             <Tooltip text={"Lens"}>
               <button
                 className={`${isCurrentPath("/Lens") ? "w-8 h-8 p-1 flex justify-center bg-sky-200 bg-opacity-20  items-center rounded-lg " : "w-8 h-8 hover:bg-slate-300 hover:bg-opacity-15 p-1 flex justify-center items-center rounded-lg"}`}
@@ -90,7 +93,7 @@ function Navbar() {
                 <img src={image} alt="" />
               </button>
             </Tooltip>
-          </NavLink>
+          </NavLink> */}
         </div>
         <div className="flex flex-col">
           <NavLink>

@@ -1,11 +1,11 @@
 // routes.js
 import Signup from "../Pages/Auth/Signup.jsx";
 import Signin from "../Pages/Auth/Signin.jsx";
-import Home from "../Pages/Home/Home.jsx";
+import Dashboard from "../Pages/Dashboard/Dashboard.jsx";
 import Landing from "../Pages/landing/Landing.jsx";
 import Setting from "../Pages/Setting/Setting.jsx";
 import Forum from "../Pages/Forum/Forum.jsx";
-import Search from "../Pages/search/Search.jsx";
+import Explore from "../Pages/Explore/Explore.jsx";
 import Profile from "../Pages/Setting/Profile.jsx";
 import Layout from "../Layout.jsx";
 import Lens from "../Pages/Lens/Lens.jsx";
@@ -31,9 +31,9 @@ const routes = [
       </PrivateRoutes>
     ),
     children: [
-      { path: "home", element: <Home /> },
+      { path: "dashboard", element: <Dashboard /> },
       { path: "forum", element: <Forum /> },
-      { path: "search", element: <Search /> },
+      { path: "home", element: <Explore /> },
       { path: "lens", element: <Lens /> },
       { path: "calendar", element: <Calendar /> },
       {

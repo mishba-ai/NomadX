@@ -1,8 +1,5 @@
-import Budget from "../../components/Home/Budget.jsx";
-import Todo from "../../components/Home/Todo.jsx";
-import Wishlist from "../../components/Home/Wishlist.jsx";
+import { Budget, Todo, Wishlist,Travelstats } from "../../components/Dashboard";
 import Location from "../../components/Location.jsx";
-import Travelstats from "../../components/Home/Travelstats.jsx";
 import Progressbar from "../../components/Progressbar.jsx";
 import { useState, useEffect } from "react";
 import WorldCities from "../../components/Globe/worldcities.jsx";
