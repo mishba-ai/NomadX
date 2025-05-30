@@ -1,10 +1,15 @@
-from django.core.management.base import BaseCommand #
-# from api.models import C
+from django.core.management.base import BaseCommand 
+from datetime import datetime
+from django.conf import setting 
 import requests
+import json
+import psycopg2
 import csv
 from bs4 import BeautifulSoup
+import os
 
 class Command(BaseCommand):
+    
     help = 'Collect and update city data' # 
 
     def handle(self,*args,**options):
@@ -26,9 +31,19 @@ class Command(BaseCommand):
         pass
 
     def collect_weather_data(self):
+        OPENWEATHERMAP_API_KEY = os.getenv('OPENWEATHERMAP_API_KEY')
 
-        #
-        pass
+        url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={OPENWEATHERMAP_API_KEY}&units=metric"
+        response = requests.get(url)
+        if response.status_code == 200:
+            data= response.json()
+            return{
+                'temperature':data['main']['temp'],
+                 'humidity':data['main']['temp'],
+                 'description':data['weather'][0]['description']           
+                }
+        return None
+        
 
     def collect_air_quality_data(self):
 

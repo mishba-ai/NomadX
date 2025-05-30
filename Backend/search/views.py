@@ -3,10 +3,10 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.decorators import action
 from rest_framework import status ,viewsets , filters
 from django.db.models import Q # this use for search query 
-from api.models import Search
+from models import Search
 from rest_framework.permissions import IsAuthenticated
-from api.serializers.search_serializer import SearchSerializer
-from backend.search.permissions import IsOwnerOrReadOnly
+from backend.search.serializers import SearchSerializer
+from permissions import IsOwnerOrReadOnly
 from django.core.exceptions import ValidationError
 from rest_framework.exceptions import NotAuthenticated
 

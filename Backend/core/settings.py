@@ -62,9 +62,10 @@ INSTALLED_APPS = [
     'api.apps.ApiConfig',
     'rest_framework',
     'corsheaders',
-    'django_filters'
- 
-
+    'django_filters',
+    'auth.apps.AuthConfig',
+    'search.apps.SearchConfig',
+    'cities.apps.CitiesConfig',
 ]
 
 MIDDLEWARE = [
