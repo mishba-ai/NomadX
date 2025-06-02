@@ -68,7 +68,7 @@ class Search(models.Model):
         ('HIGH','High'),    
     ]
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='searches')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='search_queries')
     name = models.CharField(max_length=100)
     continent = models.CharField(max_length=3 ,choices=CONTINENT_CHOICES, null=True, blank=True)
 

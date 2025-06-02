@@ -6,7 +6,7 @@ from django.db.models import Q # this use for search query
 from api.models import Search
 from rest_framework.permissions import IsAuthenticated
 from api.serializers.search_serializer import SearchSerializer
-from backend.search.permissions import IsOwnerOrReadOnly
+from search.permissions import IsOwnerOrReadOnly
 from django.core.exceptions import ValidationError
 from rest_framework.exceptions import NotAuthenticated
 

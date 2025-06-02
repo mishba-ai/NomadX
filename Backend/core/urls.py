@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from auth.views import CreateUserAuthView
+from authentication.views import CreateUserAuthView
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView  #these views are built in views that allow us to obtain our access token and refresh token
 
 # this is the url configuration for the backend project means that the urls that we want to use in our project for example the admin url that we can use to access the admin panel of our project

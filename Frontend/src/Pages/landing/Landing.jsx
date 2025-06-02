@@ -1,4 +1,3 @@
-import girlbp from "../../assets/girlbp.png";
 import Header from "../../components/landing/Header.jsx";
 import Footer from "../../components/landing/Footer.jsx";
 import { useState } from "react";

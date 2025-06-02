@@ -63,7 +63,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'django_filters',
-    'auth.apps.AuthConfig',
+    'authentication.apps.AuthConfig',
     'search.apps.SearchConfig',
     'cities.apps.CitiesConfig',
 ]
