@@ -140,3 +140,29 @@ dist
 
 vercel.json
 # End of https://mrkandreev.name/snippets/gitignore-generator/#Node
+
+
+# Django specific
+backend/*.pyc
+backend/migrations/__pycache__/
+backend/*/migrations/__pycache__/
+backend/*/migrations/*.pyc
+backend/**/__pycache__/
+
+# Django static files (if collected)
+backend/staticfiles/
+backend/static/
+
+# Django media files (user uploads)
+backend/media/
+
+# Django database
+backend/db.sqlite3
+backend/db.sqlite3-journal
+
+# Django logs
+backend/*.log
+backend/logs/
+
+# Django local settings
+backend/local_settings.py
