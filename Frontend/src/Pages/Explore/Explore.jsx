@@ -20,7 +20,6 @@ function Search() {
   };
 
   const handleSearch = async (filterData) => {
-    
     try {
       const response = await api.get("search/", { filterData });
       setSearchResults(response.data);
@@ -36,11 +35,12 @@ function Search() {
           <Filter /> <Nomadmap selectcity={selectCity} />{" "}
         </div>
       )} */}
-      {showCityOverview ? (
+      {showCityOverview ? ( 
         <CityOverview city={selectedCity} onBack={handleBackButton} />
       ) : (
         <div className="w-full h-screen flex flex-col bg-[#070707]">
-          <Filter onSearch={handleSearch}/> <Nomadmap selectcity={selectCity} />{" "}
+          <Filter onSearch={handleSearch} />{" "}
+          <Nomadmap selectcity={selectCity} />{" "}
         </div>
       )}
     </>

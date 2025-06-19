@@ -2,6 +2,7 @@
   <img src ="/Frontend/public/NOMADX.png" width="200" height="200" >
 </p>
 
+
 # What is NomadX?
 
 NomadX is a web app designed to be a hub for Digital Nomads. 

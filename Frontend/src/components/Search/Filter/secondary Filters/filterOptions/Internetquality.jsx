@@ -1,3 +1,4 @@
+import Slider from "../../../../ui/Slider";
 
 export default function Internetquality() {
   return (
@@ -8,17 +9,7 @@ export default function Internetquality() {
           <label htmlFor="minSpeed" className="block text-sm font-medium text-gray-400 mb-2">
             Minimum Download Speed (Mbps)
           </label>
-          <input
-            type="range"
-            id="minSpeed"
-            min="0"
-            max="100"
-            className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer"
-          />
-          <div className="flex justify-between text-sm text-gray-500 mt-2">
-            <span>0 Mbps</span>
-            <span>100 Mbps</span>
-          </div>
+         <Slider Min_value='1 Mbps' Min_range={1} Max_range={100} Max_value="100 Mbps"/>
         </div>
         <div>
           <label htmlFor="reliability" className="block text-sm font-medium text-gray-400 mb-2">

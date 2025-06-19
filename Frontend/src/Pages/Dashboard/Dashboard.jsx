@@ -1,4 +1,9 @@
-import { Budget, Todo, Wishlist,Travelstats } from "../../components/Dashboard";
+import {
+  Budget,
+  Todo,
+  Wishlist,
+  Travelstats,
+} from "../../components/Dashboard";
 import Location from "../../components/Location.jsx";
 import Progressbar from "../../components/Progressbar.jsx";
 import { useState, useEffect } from "react";
@@ -13,12 +18,12 @@ function Home() {
     const fetchUsername = async () => {
       try {
         const response = await api.get("user/profile/", {
-          headers: {'Authorization': `Token ${localStorage.getItem('token')}`}
+          headers: { Authorization: `Token ${localStorage.getItem("token")}` },
         });
         if (response.data && response.data.username) {
           setUser(response.data.username);
         } else {
-          console.error('Username not found in response:', response.data);
+          console.error("Username not found in response:", response.data);
         }
       } catch (error) {
         console.error("error fetching username", error);

@@ -166,3 +166,9 @@ backend/logs/
 
 # Django local settings
 backend/local_settings.py
+
+
+
+
+
+.ipynb_checkpoints

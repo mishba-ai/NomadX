@@ -1,4 +1,4 @@
-
+import Slider from "../../../../ui/Slider"
 
 export default function Budjet() {
   return (
@@ -11,18 +11,8 @@ export default function Budjet() {
           <label htmlFor="monthlyBudget" className="block text-sm font-medium text-gray-400 mb-2">
             Monthly Budget (USD)
           </label>
-          <input
-            type="range"
-            id="monthlyBudget"
-            min="500"
-            max="5000"
-            step="100"
-            className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer"
-          />
-          <div className="flex justify-between text-sm text-gray-500 mt-2">
-            <span>$500</span>
-            <span>$5000+</span>
-          </div>
+          <Slider Min_value='$500' Max_value="$5000+ " Min_range={500} Max_range={5000} steps={100}/>
+          
         </div>
 
         <div>
